@@ -6,7 +6,6 @@ namespace Enemies
 {
     public class Chaser : EnemyBase, IDamagable, IGrabable
     {
-        [SerializeField] private float patrollingSpeed;
         [SerializeField] private List<Transform> patrolPoints;
 
         private float patrDelta = 0.1f;
@@ -17,7 +16,6 @@ namespace Enemies
             if (patrolPoints.Count != 0)
             {
                 state = State.Patrolling;
-                moveSpeed = patrollingSpeed;
                 target = patrolPoints[currentPatrolPos].position;
             }
             else
@@ -60,6 +58,11 @@ namespace Enemies
                 currentPatrolPos++;
 
             target = patrolPoints[currentPatrolPos].position;
+        }
+
+        protected override void SetData()
+        {
+            moveSpeed = data.chaserSpeed;
         }
     }
 }
