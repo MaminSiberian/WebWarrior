@@ -17,7 +17,7 @@ namespace Enemies
         }
         protected virtual void MoveEnemy()
         {
-
+            rb.MovePosition(transform.position + (target - transform.position).normalized * moveSpeed * Time.fixedDeltaTime);
         }
         protected abstract void OnEnemyDeath();
     }
