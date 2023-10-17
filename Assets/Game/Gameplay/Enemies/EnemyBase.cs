@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Enemies
 {
     [RequireComponent(typeof(Rigidbody))]
-    public abstract class EnemyBase : MonoBehaviour
+    public abstract class EnemyBase : PoolableObject
     {
         public State state {  get; protected set; }
 
