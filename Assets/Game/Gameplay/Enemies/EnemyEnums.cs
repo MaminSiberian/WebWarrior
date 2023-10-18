@@ -7,6 +7,7 @@ namespace Enemies
         Patrolling,
         Chasing,
         Attacking,
+        Reloading,
         Death
     }
 }

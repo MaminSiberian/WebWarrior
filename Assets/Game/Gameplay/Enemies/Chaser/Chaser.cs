@@ -14,17 +14,10 @@ namespace Enemies
         #region MONOBEHS
         private void Start()
         {
-            if (patrolPoints.Count != 0)
-            {
-                StartPatrolling();         
-            }
-            else
-                state = State.Idle;
+            StartPatrolling();
         }
         private void FixedUpdate()
         {
-            Debug.Log(DistanceToPlayer());
-            Debug.Log(state);
             if (state == State.Attacking || state == State.Death) return;
 
             if (DistanceToPlayer() <= attackingDistance && state != State.Attacking)
@@ -52,12 +45,8 @@ namespace Enemies
                 CheckPatrollingPoints();
                 return;
             }
-            if (patrolPoints.Count != 0)
-            {
-                StartPatrolling();
-            }
-            else
-                StartIdle();
+
+            StartPatrolling();
         }
         #endregion
 
@@ -68,6 +57,12 @@ namespace Enemies
         }
         private void StartPatrolling()
         {
+            if (patrolPoints.Count == 0)
+            {
+                StartIdle();
+                return;
+            }
+
             state = State.Patrolling;
             moveSpeed = patrollingSpeed;
             target = patrolPoints[currentPatrolPos];
@@ -114,12 +109,12 @@ namespace Enemies
         #region GRAB
         public void OnGrab()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Grab");
         }
 
         public void OnRelease()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Release");
         }
         #endregion
     }
