@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1518594218625777795
 MonoBehaviour:
@@ -44,4 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c96b7ead0bb0448bc3fb8a979392b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _chaserSpeed: 3
+  _chaserPatrollingSpeed: 2
+  _chaserChasingSpeed: 6
+  _chaserAttackingSpeed: 7
+  _chaserChasingDistance: 10
+  _chaserAttackingDistance: 1.5

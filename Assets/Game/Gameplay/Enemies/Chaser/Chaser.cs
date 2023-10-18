@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace Enemies
 {
@@ -24,21 +24,40 @@ namespace Enemies
         private void FixedUpdate()
         {
             Debug.Log(DistanceToPlayer());
-            if (DistanceToPlayer() <= attackingDistance)
-            {
+            Debug.Log(state);
+            if (state == State.Attacking || state == State.Death) return;
 
+            if (DistanceToPlayer() <= attackingDistance && state != State.Attacking)
+            {
+                StartAttacking();
+                return;
             }
-            if (DistanceToPlayer() <= chasingDistance)
+            if (DistanceToPlayer() <= chasingDistance && state != State.Chasing)
             {
                 StartChasing();
                 return;
             }
 
-            if (state == State.Patrolling || state == State.Chasing)
+            if (state == State.Chasing)
+            {
+                if (DistanceToPlayer() > chasingDistance)
+                    StartIdle();
+                else
+                    MoveEnemy();
+                return;
+            }
+            if (state == State.Patrolling)
             {
                 MoveEnemy();
                 CheckPatrollingPoints();
+                return;
             }
+            if (patrolPoints.Count != 0)
+            {
+                StartPatrolling();
+            }
+            else
+                StartIdle();
         }
         #endregion
 
@@ -63,6 +82,10 @@ namespace Enemies
         {
             state = State.Attacking;         
             target = player;
+            transform.DOMove(target.position, attackingSpeed)
+                .SetEase(Ease.InBack)
+                .SetSpeedBased()
+                .OnKill(() => OnAttackEnded());
         }
         private void OnAttackEnded()
         {
