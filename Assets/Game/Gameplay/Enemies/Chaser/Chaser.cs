@@ -1,68 +1,103 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// Враг, атакующий в ближнем бою
 namespace Enemies
 {
     public class Chaser : EnemyBase, IDamagable, IGrabable
     {
-        [SerializeField] private List<Transform> patrolPoints;
+        private float patrollingSpeed;
+        private float chasingSpeed;
+        private float attackingSpeed;
+        private float chasingDistance;
+        private float attackingDistance;
 
-        private float patrDelta = 0.1f;
-        protected int currentPatrolPos = 0;
-
+        #region MONOBEHS
         private void Start()
         {
             if (patrolPoints.Count != 0)
             {
-                state = State.Patrolling;
-                target = patrolPoints[currentPatrolPos].position;
+                StartPatrolling();         
             }
             else
                 state = State.Idle;
         }
-
         private void FixedUpdate()
         {
-            if (state == State.Patrolling)
+            Debug.Log(DistanceToPlayer());
+            if (DistanceToPlayer() <= attackingDistance)
+            {
+
+            }
+            if (DistanceToPlayer() <= chasingDistance)
+            {
+                StartChasing();
+                return;
+            }
+
+            if (state == State.Patrolling || state == State.Chasing)
             {
                 MoveEnemy();
                 CheckPatrollingPoints();
             }
         }
+        #endregion
+
+        #region CHANGING_STATES
+        private void StartIdle()
+        {
+            state = State.Idle;
+        }
+        private void StartPatrolling()
+        {
+            state = State.Patrolling;
+            moveSpeed = patrollingSpeed;
+            target = patrolPoints[currentPatrolPos];
+        }
+        private void StartChasing()
+        {
+            state = State.Chasing;
+            moveSpeed = chasingSpeed;
+            target = player;
+        }
+        private void StartAttacking()
+        {
+            state = State.Attacking;         
+            target = player;
+        }
+        private void OnAttackEnded()
+        {
+            StartIdle();
+        }
+        #endregion
 
         public void GetDamage()
         {
-            throw new System.NotImplementedException();
+            OnEnemyDeath();
+        }
+        protected override void OnEnemyDeath()
+        {
+            state = State.Death;
+            Deactivate();
+        }
+        protected override void SetData()
+        {
+            patrollingSpeed = data.chaserPatrollingSpeed;
+            chasingSpeed = data.chaserChasingSpeed;
+            attackingSpeed = data.chaserAttackingSpeed;
+            chasingDistance = data.chaserChasingDistance;
+            attackingDistance = data.chaserAttackingDistance;
         }
 
+        #region GRAB
         public void OnGrab()
         {
             throw new System.NotImplementedException();
         }
 
-        protected override void OnEnemyDeath()
+        public void OnRelease()
         {
             throw new System.NotImplementedException();
         }
-        private void CheckPatrollingPoints()
-        {
-            if (Vector3.Distance(transform.position, target) <= patrDelta)
-                SwitchPatrollingPoint();
-        }
-        private void SwitchPatrollingPoint()
-        {
-            if (currentPatrolPos == patrolPoints.Count - 1)
-                currentPatrolPos = 0;
-            else
-                currentPatrolPos++;
-
-            target = patrolPoints[currentPatrolPos].position;
-        }
-
-        protected override void SetData()
-        {
-            moveSpeed = data.chaserSpeed;
-        }
+        #endregion
     }
 }
