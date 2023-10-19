@@ -48,7 +48,7 @@ MonoBehaviour:
   _chaserChasingSpeed: 6
   _chaserAttackingSpeed: 7
   _chaserChasingDistance: 10
-  _chaserAttackingDistance: 1.5
+  _chaserAttackingDistance: 3
   _shooterPatrollingSpeed: 2
   _shooterAttackingForce: 450
   _shooterAttackingDistance: 15

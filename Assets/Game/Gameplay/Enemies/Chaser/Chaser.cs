@@ -61,6 +61,13 @@ namespace Enemies
 
             StartPatrolling();
         }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject == player.gameObject)
+            {
+                player.GetComponent<IDamagable>().GetDamage();
+            }
+        }
         #endregion
 
         #region CHANGING_STATES

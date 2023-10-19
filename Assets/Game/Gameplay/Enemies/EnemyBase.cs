@@ -26,6 +26,7 @@ namespace Enemies
             rb = GetComponent<Rigidbody>();
             data = FindAnyObjectByType<EnemyData>();
             player = FindAnyObjectByType<TestPlayer>().transform;
+            Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>());
             SetData();
         }
         protected virtual void OnEnable()
