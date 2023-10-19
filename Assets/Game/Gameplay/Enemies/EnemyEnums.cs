@@ -8,6 +8,8 @@ namespace Enemies
         Chasing,
         Attacking,
         Reloading,
+        Grabbed,
+        Released,
         Death
     }
 }

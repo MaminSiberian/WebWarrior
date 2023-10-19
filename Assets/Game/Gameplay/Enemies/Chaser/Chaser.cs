@@ -18,7 +18,16 @@ namespace Enemies
         }
         private void FixedUpdate()
         {
-            if (state == State.Attacking || state == State.Death) return;
+            if (state == State.Released && rb.velocity == Vector3.zero)
+            {
+                StartPatrolling();
+                return;
+            }
+
+            if (state == State.Attacking 
+                || state == State.Death
+                || state == State.Grabbed
+                || state == State.Released) return;
 
             if (DistanceToPlayer() <= attackingDistance && state != State.Attacking)
             {
@@ -113,12 +122,12 @@ namespace Enemies
         #region GRAB
         public void OnGrab()
         {
-            Debug.Log("Grab");
+            state = State.Grabbed;
         }
 
         public void OnRelease()
         {
-            Debug.Log("Release");
+            state = State.Released;
         }
         #endregion
     }

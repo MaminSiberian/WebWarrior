@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 
 namespace Enemies
@@ -10,10 +9,16 @@ namespace Enemies
         private float attackingDistance;
         private float reloadingTime;
 
+        private Collider coll;
         private bool readyToFire = true;
         private float reloadingTimer = 0f;
 
         #region MONOBEHS
+        protected override void Awake()
+        {
+            base.Awake();
+            coll = GetComponent<Collider>();
+        }
         private void Start()
         {
             StartPatrolling();
@@ -30,10 +35,17 @@ namespace Enemies
         }
         private void FixedUpdate()
         {
-            
-            if (state == State.Attacking || 
-                state == State.Death || 
-                state == State.Reloading) return;
+            if (state == State.Released && rb.velocity == Vector3.zero)
+            {
+                StartPatrolling();
+                return;
+            }
+
+            if (state == State.Attacking 
+                || state == State.Death 
+                || state == State.Reloading
+                || state == State.Grabbed
+                || state == State.Released) return;
 
             if (!readyToFire && state != State.Reloading)
             {
@@ -79,11 +91,11 @@ namespace Enemies
         private void StartAttacking()
         {
             state = State.Attacking;
-            target = player;
             var proj = ProjectilePool.GetProjectile();
+            proj.TurnOffCollision(coll);
             proj.transform.position = transform.position;
             proj.GetComponent<Rigidbody>()
-                .AddForce((target.position - transform.position).normalized * attackingForce);
+                .AddForce((player.position - transform.position).normalized * attackingForce);
             OnAttackEnded();
         }
         private void OnAttackEnded()
@@ -119,18 +131,21 @@ namespace Enemies
 
         public void GetDamage()
         {
-            OnEnemyDeath();
+            Debug.Log(name + " damaged");
+            //OnEnemyDeath();
         }
 
+        #region GRAB
         public void OnGrab()
         {
-            throw new System.NotImplementedException();
+            state = State.Grabbed;
         }
 
         public void OnRelease()
         {
-            throw new System.NotImplementedException();
+            state = State.Released;
         }
+        #endregion
 
         protected override void OnEnemyDeath()
         {
