@@ -1,42 +1,41 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 namespace Enemies
 {
-    public class Chaser : EnemyBase, IDamagable, IGrabable
+    public class MiniChaser : EnemyBase, IDamagable, IGrabable
     {
-        private float patrollingSpeed;
-        private float chasingSpeed;
-        private float attackingSpeed;
-        private float chasingDistance;
-        private float attackingDistance;
+        protected float chasingSpeed;
+        protected float attackingSpeed;
+        protected float chasingDistance;
+        protected float attackingDistance;
 
         #region MONOBEHS
         private void Start()
         {
-            StartPatrolling();
+            StartIdle();
         }
         private void FixedUpdate()
         {
             if (state == State.Released && rb.velocity == Vector3.zero)
             {
-                StartPatrolling();
+                StartIdle();
                 return;
             }
 
-            if (state == State.Attacking 
+            if (state == State.Attacking
                 || state == State.Death
                 || state == State.Grabbed
                 || state == State.Released) return;
 
-            if (DistanceToPlayer() <= attackingDistance 
-                && PlayerIsVisible() 
+            if (DistanceToPlayer() <= attackingDistance
+                && PlayerIsVisible()
                 && state != State.Attacking)
             {
                 StartAttacking();
                 return;
             }
-            if (DistanceToPlayer() <= chasingDistance 
+            if (DistanceToPlayer() <= chasingDistance
                 && PlayerIsVisible()
                 && state != State.Chasing)
             {
@@ -52,21 +51,8 @@ namespace Enemies
                     MoveEnemy();
                 return;
             }
-            if (state == State.Patrolling)
-            {
-                MoveEnemy();
-                CheckPatrollingPoints();
-                return;
-            }
 
-            StartPatrolling();
-        }
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject == player.gameObject)
-            {
-                player.GetComponent<IDamagable>().GetDamage();
-            }
+            StartIdle();
         }
         #endregion
 
@@ -74,18 +60,6 @@ namespace Enemies
         private void StartIdle()
         {
             state = State.Idle;
-        }
-        private void StartPatrolling()
-        {
-            if (patrolPoints.Count == 0)
-            {
-                StartIdle();
-                return;
-            }
-
-            state = State.Patrolling;
-            moveSpeed = patrollingSpeed;
-            target = patrolPoints[currentPatrolPos];
         }
         private void StartChasing()
         {
@@ -97,7 +71,7 @@ namespace Enemies
         #region ATTACKING
         private void StartAttacking()
         {
-            state = State.Attacking;         
+            state = State.Attacking;
             target = player;
             transform.DOMove(target.position, attackingSpeed)
                 .SetEase(Ease.InBack)
@@ -123,11 +97,10 @@ namespace Enemies
         }
         protected override void SetData()
         {
-            patrollingSpeed = data.chaserPatrollingSpeed;
-            chasingSpeed = data.chaserChasingSpeed;
-            attackingSpeed = data.chaserAttackingSpeed;
-            chasingDistance = data.chaserChasingDistance;
-            attackingDistance = data.chaserAttackingDistance;
+            chasingSpeed = data.miniChaserChasingDistance;
+            attackingSpeed = data.miniChaserAttackingSpeed;
+            chasingDistance = data.miniChaserChasingDistance;
+            attackingDistance = data.miniChaserAttackingDistance;
         }
 
         #region GRAB

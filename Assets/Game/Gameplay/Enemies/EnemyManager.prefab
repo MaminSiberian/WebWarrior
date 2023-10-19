@@ -44,12 +44,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c96b7ead0bb0448bc3fb8a979392b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showChaserParams: 0
   _chaserPatrollingSpeed: 2
-  _chaserChasingSpeed: 6
+  _chaserChasingSpeed: 4
   _chaserAttackingSpeed: 7
   _chaserChasingDistance: 10
   _chaserAttackingDistance: 3
+  showShooterParams: 0
   _shooterPatrollingSpeed: 2
   _shooterAttackingForce: 450
   _shooterAttackingDistance: 15
   _shooterReloadingTime: 1
+  showCarrierParams: 0
+  _carrierPatrollingSpeed: 2
+  _carrierChasingSpeed: 4
+  _carrierAttackingSpeed: 7
+  _carrierChasingDistance: 10
+  _carrierAttackingDistance: 3
+  showMiniChaserParams: 0
+  _miniChaserChasingSpeed: 4
+  _miniChaserAttackingSpeed: 7
+  _miniChaserChasingDistance: 30
+  _miniChaserAttackingDistance: 3
