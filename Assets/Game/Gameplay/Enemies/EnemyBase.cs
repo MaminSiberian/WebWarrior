@@ -10,6 +10,7 @@ namespace Enemies
 
         protected float patrDelta = 0.1f;
         protected int currentPatrolPos = 0;
+        private int wallsLayer = 6;
 
         public State state {  get; protected set; }
 
@@ -44,6 +45,16 @@ namespace Enemies
         protected float DistanceToPlayer()
         {
             return Vector3.Distance(transform.position, player.position);
+        }
+        protected bool PlayerIsVisible()
+        {
+            RaycastHit hit;
+            if (Physics.Linecast(transform.position, player.position, out hit))
+            {
+                if (hit.collider.gameObject.layer == wallsLayer)
+                    return false;
+            }
+            return true;
         }
 
         #region PATROLLING

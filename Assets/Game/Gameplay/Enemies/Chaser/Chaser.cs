@@ -29,12 +29,16 @@ namespace Enemies
                 || state == State.Grabbed
                 || state == State.Released) return;
 
-            if (DistanceToPlayer() <= attackingDistance && state != State.Attacking)
+            if (DistanceToPlayer() <= attackingDistance 
+                && PlayerIsVisible() 
+                && state != State.Attacking)
             {
                 StartAttacking();
                 return;
             }
-            if (DistanceToPlayer() <= chasingDistance && state != State.Chasing)
+            if (DistanceToPlayer() <= chasingDistance 
+                && PlayerIsVisible()
+                && state != State.Chasing)
             {
                 StartChasing();
                 return;
@@ -42,7 +46,7 @@ namespace Enemies
 
             if (state == State.Chasing)
             {
-                if (DistanceToPlayer() > chasingDistance)
+                if (DistanceToPlayer() > chasingDistance || !PlayerIsVisible())
                     StartIdle();
                 else
                     MoveEnemy();

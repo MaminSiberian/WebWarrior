@@ -53,7 +53,9 @@ namespace Enemies
                 return;
             }
 
-            if (DistanceToPlayer() <= attackingDistance && state != State.Attacking)
+            if (DistanceToPlayer() <= attackingDistance
+                && PlayerIsVisible()
+                && state != State.Attacking)
             {
                 StartAttacking();
                 return;

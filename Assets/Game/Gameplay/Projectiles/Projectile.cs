@@ -5,6 +5,7 @@ public class Projectile : PoolableObject
     private Collider coll;
     private Rigidbody rb;
     private Collider sender;
+    private int wallsLayer = 6;
 
     private void Awake()
     {
@@ -30,6 +31,12 @@ public class Projectile : PoolableObject
     private void OnCollisionEnter(Collision collision)
     {
         TurnOnCollision();
+        if (collision.gameObject.layer == wallsLayer)
+        {
+            Deactivate();
+            return;
+        }
+
         var obj = collision.gameObject.GetComponent<IDamagable>();
 
         if (obj != null)
