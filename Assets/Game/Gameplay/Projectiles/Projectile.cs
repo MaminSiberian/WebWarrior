@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Projectile : PoolableObject
+public class Projectile : PoolableObject, IGrabable
 {
     private Collider coll;
     private Rigidbody rb;
@@ -44,5 +44,15 @@ public class Projectile : PoolableObject
             obj.GetDamage();
             Deactivate();
         }
+    }
+
+    public void OnGrab()
+    {
+        
+    }
+
+    public void OnRelease()
+    {
+        
     }
 }

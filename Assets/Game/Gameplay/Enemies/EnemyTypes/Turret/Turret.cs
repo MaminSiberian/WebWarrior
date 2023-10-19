@@ -5,15 +5,15 @@ namespace Enemies
 {
     public class Turret : EnemyBase
     {
-        [SerializeField] private bool shootPlayer;
+        [SerializeField] private bool shootPlayer = true;
         [SerializeField, HideIf("shootPlayer")] private Transform _aimTarget;
 
-        private float patrollingSpeed;
-        private float attackingForce;
-        private float attackingDistance;
-        private float reloadingTime;
+        protected float patrollingSpeed;
+        protected float attackingForce;
+        protected float attackingDistance;
+        protected float reloadingTime;
 
-        private Collider coll;
+        protected Collider coll;
         private Transform aimTarget;
         private bool readyToFire = true;
         private float reloadingTimer = 0f;
@@ -94,7 +94,7 @@ namespace Enemies
         }
 
         #region ATTACKING
-        private void StartAttacking()
+        protected virtual void StartAttacking()
         {
             state = State.Attacking;
             var proj = ProjectilePool.GetProjectile();
@@ -104,7 +104,7 @@ namespace Enemies
                 .AddForce((aimTarget.position - transform.position).normalized * attackingForce);
             OnAttackEnded();
         }
-        private void OnAttackEnded()
+        protected void OnAttackEnded()
         {
             readyToFire = false;
             StartReloading();

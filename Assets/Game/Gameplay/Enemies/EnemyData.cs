@@ -75,6 +75,17 @@ namespace Enemies
         public float turretReloadingTime { get { return _turretReloadingTime; } }
         #endregion
 
+        #region SPAWN_TURRET_PARAMS
+        [Header("SpawnTurret")]
+        [SerializeField] private bool showSpawnTurretParams;
+        [SerializeField, ShowIf("showSpawnTurretParams")] private float _spawnTurretPatrollingSpeed;
+        [SerializeField, ShowIf("showSpawnTurretParams")] private float _spawnTurretAttackingDistance;
+        [SerializeField, ShowIf("showSpawnTurretParams")] private float _spawnTurretReloadingTime;
+        public float spawnTurretPatrollingSpeed { get { return _spawnTurretPatrollingSpeed; } }
+        public float spawnTurretAttackingDistance { get { return _spawnTurretAttackingDistance; } }
+        public float spawnTurretReloadingTime { get { return _spawnTurretReloadingTime; } }
+        #endregion
+
         public static EnemyData instance { get; private set; }
         public event Action OnDataChanged;
 

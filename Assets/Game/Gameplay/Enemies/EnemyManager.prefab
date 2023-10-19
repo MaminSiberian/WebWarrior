@@ -66,3 +66,12 @@ MonoBehaviour:
   _miniChaserAttackingSpeed: 7
   _miniChaserChasingDistance: 30
   _miniChaserAttackingDistance: 3
+  showTurretParams: 0
+  _turretPatrollingSpeed: 2
+  _turretAttackingForce: 450
+  _turretAttackingDistance: 15
+  _turretReloadingTime: 1
+  showSpawnTurretParams: 0
+  _spawnTurretPatrollingSpeed: 2
+  _spawnTurretAttackingDistance: 25
+  _spawnTurretReloadingTime: 4
