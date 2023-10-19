@@ -12,7 +12,7 @@ namespace Enemies
             chaser1.transform.position = transform.position + Vector3.left * 0.5f;
 
             var chaser2 = MiniChaserPool.GetMiniChaser();
-            chaser1.transform.position = transform.position + Vector3.right * 0.5f;
+            chaser2.transform.position = transform.position + Vector3.right * 0.5f;
 
             state = State.Death;
             Deactivate();

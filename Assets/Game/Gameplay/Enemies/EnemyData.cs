@@ -62,6 +62,19 @@ namespace Enemies
         public float miniChaserAttackingDistance { get { return _miniChaserAttackingDistance; } }
         #endregion
 
+        #region TURRET_PARAMS
+        [Header("Turret")]
+        [SerializeField] private bool showTurretParams;
+        [SerializeField, ShowIf("showTurretParams")] private float _turretPatrollingSpeed;
+        [SerializeField, ShowIf("showTurretParams")] private float _turretAttackingForce;
+        [SerializeField, ShowIf("showTurretParams")] private float _turretAttackingDistance;
+        [SerializeField, ShowIf("showTurretParams")] private float _turretReloadingTime;
+        public float turretPatrollingSpeed { get { return _turretPatrollingSpeed; } }
+        public float turretAttackingForce { get { return _turretAttackingForce; } }
+        public float turretAttackingDistance { get { return _turretAttackingDistance; } }
+        public float turretReloadingTime { get { return _turretReloadingTime; } }
+        #endregion
+
         public static EnemyData instance { get; private set; }
         public event Action OnDataChanged;
 
