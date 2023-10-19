@@ -73,6 +73,8 @@ namespace Enemies
             moveSpeed = chasingSpeed;
             target = player;
         }
+
+        #region ATTACKING
         private void StartAttacking()
         {
             state = State.Attacking;         
@@ -86,6 +88,8 @@ namespace Enemies
         {
             StartIdle();
         }
+        #endregion
+
         #endregion
 
         public void GetDamage()

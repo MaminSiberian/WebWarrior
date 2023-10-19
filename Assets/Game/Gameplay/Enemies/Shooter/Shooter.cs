@@ -11,16 +11,12 @@ namespace Enemies
         private float reloadingTime;
 
         private bool readyToFire = true;
+        private float reloadingTimer = 0f;
 
         #region MONOBEHS
         private void Start()
         {
-            if (patrolPoints.Count != 0)
-            {
-                StartPatrolling();
-            }
-            else
-                state = State.Idle;
+            StartPatrolling();
         }
         protected override void Update()
         {
@@ -57,12 +53,7 @@ namespace Enemies
                 CheckPatrollingPoints();
                 return;
             }
-            if (patrolPoints.Count != 0)
-            {
-                StartPatrolling();
-            }
-            else
-                StartIdle();
+            StartPatrolling();
         }
         #endregion
 
@@ -73,36 +64,62 @@ namespace Enemies
         }
         private void StartPatrolling()
         {
+            if (patrolPoints.Count == 0)
+            {
+                StartIdle();
+                return;
+            }
+
             state = State.Patrolling;
             moveSpeed = patrollingSpeed;
             target = patrolPoints[currentPatrolPos];
         }
 
+        #region ATTACKING
         private void StartAttacking()
         {
-            
+            state = State.Attacking;
+            target = player;
+            var proj = ProjectilePool.GetProjectile();
+            proj.transform.position = transform.position;
+            proj.GetComponent<Rigidbody>()
+                .AddForce((target.position - transform.position).normalized * attackingForce);
+            OnAttackEnded();
         }
         private void OnAttackEnded()
         {
-            
+            readyToFire = false;
+            StartReloading();
         }
+        #endregion
+
+        #region RELOADING
         private void StartReloading()
         {
-
+            state = State.Reloading;
         }
         private void Reload()
         {
-
+            if (reloadingTimer >= reloadingTime)
+            {
+                reloadingTimer -= reloadingTime;
+                OnReloadEnded();
+            }
+            else
+                reloadingTimer += Time.deltaTime;
         }
         private void OnReloadEnded()
         {
-
+            readyToFire = true;
+            StartPatrolling();
         }
         #endregion
-        
+
+        #endregion
+
         public void GetDamage()
         {
-            throw new System.NotImplementedException();
+            OnEnemyDeath();
         }
 
         public void OnGrab()
@@ -117,7 +134,8 @@ namespace Enemies
 
         protected override void OnEnemyDeath()
         {
-            throw new System.NotImplementedException();
+            state = State.Death;
+            Deactivate();
         }
 
         protected override void SetData()
