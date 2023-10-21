@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using NaughtyAttributes;
 
 public class UIDirector : MonoBehaviour
 {
@@ -36,21 +37,32 @@ public class UIDirector : MonoBehaviour
     public static void PauseGame()
     {
         Time.timeScale = 0f;
+        TurnOffAll();
         pauseScreen.SetActive(true);
-        pauseButton.SetActive(false);
     }
     public static void UnpauseGame()
     {
-        pauseScreen.SetActive(false);
+        TurnOffAll();
         pauseButton.SetActive(true);
         Time.timeScale = 1f;
     }
+    [Button]
     private void OnPlayerDeath()
     {
+        TurnOffAll();
         gameOverScreen.SetActive(true);
     }
+    [Button]
     private void OnLevelFinished()
     {
+        TurnOffAll();
         levelPassedScreen.SetActive(true);
+    }
+    private static void TurnOffAll()
+    {
+        pauseButton.SetActive(false);
+        pauseScreen.SetActive(false);
+        gameOverScreen.SetActive(false);
+        levelPassedScreen.SetActive(false);
     }
 }
