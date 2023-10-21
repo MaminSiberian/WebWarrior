@@ -1,8 +1,11 @@
 
-public class PauseButton : ButtonBase
+namespace UI
 {
-    protected override void OnButtonClick()
+    public class PauseButton : ButtonBase
     {
-        UIDirector.PauseGame();
+        protected override void OnButtonClick()
+        {
+            UIDirector.PauseGame();
+        }
     }
 }

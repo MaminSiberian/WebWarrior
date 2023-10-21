@@ -1,8 +1,11 @@
 
-public class QuitLevelButton : ButtonBase
+namespace UI
 {
-    protected override void OnButtonClick()
+    public class QuitLevelButton : ButtonBase
     {
-        LevelDirector.ReturnToMainMenu();
+        protected override void OnButtonClick()
+        {
+            LevelDirector.ReturnToMainMenu();
+        }
     }
 }

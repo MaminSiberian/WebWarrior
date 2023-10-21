@@ -1,8 +1,11 @@
 
-public class PlayNextLevelButton : ButtonBase
+namespace UI
 {
-    protected override void OnButtonClick()
+    public class PlayNextLevelButton : ButtonBase
     {
-        LevelDirector.PlayNextLevel();
+        protected override void OnButtonClick()
+        {
+            LevelDirector.PlayNextLevel();
+        }
     }
 }

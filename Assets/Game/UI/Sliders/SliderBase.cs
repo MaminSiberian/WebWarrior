@@ -1,21 +1,24 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class SliderBase : MonoBehaviour
+namespace UI
 {
-    protected Slider slider;
+    public abstract class SliderBase : MonoBehaviour
+    {
+        protected Slider slider;
 
-    private void Awake()
-    {
-        slider = GetComponent<Slider>();
+        private void Awake()
+        {
+            slider = GetComponent<Slider>();
+        }
+        private void OnEnable()
+        {
+            slider.onValueChanged.AddListener(OnValueChanged);
+        }
+        private void OnDisable()
+        {
+            slider?.onValueChanged.RemoveListener(OnValueChanged);
+        }
+        protected abstract void OnValueChanged(float value);
     }
-    private void OnEnable()
-    {
-        slider.onValueChanged.AddListener(OnValueChanged);
-    }
-    private void OnDisable()
-    {
-        slider?.onValueChanged.RemoveListener(OnValueChanged);
-    }
-    protected abstract void OnValueChanged(float value);
 }

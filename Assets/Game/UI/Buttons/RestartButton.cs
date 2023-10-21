@@ -1,8 +1,11 @@
 
-public class RestartButton : ButtonBase
+namespace UI
 {
-    protected override void OnButtonClick()
+    public class RestartButton : ButtonBase
     {
-        LevelDirector.RestartLevel();
+        protected override void OnButtonClick()
+        {
+            LevelDirector.RestartLevel();
+        }
     }
 }
