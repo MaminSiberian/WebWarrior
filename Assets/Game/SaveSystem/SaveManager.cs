@@ -1,27 +1,31 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public static class SaveManager
 {
     private const string DATA_KEY = "Data.json";
 
-    private static void SetLevelsData(List<LevelData> levels)
+    public static void SetLevelsData(List<LevelData> levels)
     {
         SaveSystem.SaveToFile(levels, DATA_KEY);
     }
-    public static void SaveLevelPassed(int levelNumber)
+    public static void SaveLevelPassed(int levelNumber, bool isPassed = true)
     {
         List<LevelData> levels = LoadAllLevelData();        
 
+        if (levels == null)
+        {
+            levels = new List<LevelData>();
+        }
+
         if (levels.Any(l => l.levelNumber == levelNumber))
         {
-            var level = levels.FirstOrDefault(l => l.levelNumber == levelNumber);
-            level.isPassed = true;
+            int index = levels.IndexOf(levels.FirstOrDefault(l => l.levelNumber == levelNumber));
+            levels[index] = new LevelData() { levelNumber = levelNumber, isPassed = isPassed };
         }
         else
         {
-            LevelData newLevel = new LevelData() { levelNumber = levelNumber, isPassed = true };
+            LevelData newLevel = new LevelData() { levelNumber = levelNumber, isPassed = isPassed };
             levels.Add(newLevel);
         }
 
