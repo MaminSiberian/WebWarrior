@@ -86,21 +86,8 @@ namespace Enemies
         public float spawnTurretReloadingTime { get { return _spawnTurretReloadingTime; } }
         #endregion
 
-        public static EnemyData instance { get; private set; }
         public event Action OnDataChanged;
 
-        private void Awake()
-        {
-            if (instance != null)
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                instance = this;
-                DontDestroyOnLoad(this.gameObject);
-            }
-        }
         private void OnValidate()
         {
             OnDataChanged?.Invoke();
