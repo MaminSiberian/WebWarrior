@@ -11,16 +11,6 @@ public class SaveTester : MonoBehaviour
         ShowInfo();
     }
     [Button]
-    private void SaveLevelPassed()
-    {
-        SaveManager.SaveLevelPassed(levelNumber);
-    }
-    [Button]
-    private void SaveLevelNotPassed()
-    {
-        SaveManager.SaveLevelPassed(levelNumber, false);
-    }
-    [Button]
     private void ShowInfo()
     {
         List<LevelData> levels = SaveManager.LoadAllLevelData();
@@ -37,38 +27,45 @@ public class SaveTester : MonoBehaviour
         }
     }
     [Button]
-    private void SetAllLevelsNotPassed()
+    private void SaveLevelPassed(bool isPassed = true)
+    {
+        SaveManager.SaveLevelPassed(levelNumber, isPassed);
+    }
+    [Button]
+    private void SetAllLevelsPassed(bool isPassed = true)
     {
         List<LevelData> levels = SaveManager.LoadAllLevelData();
 
         foreach (LevelData level in levels)
         {
-            if (level.isPassed)
+            if (level.isPassed != isPassed)
             {
                 levelNumber = level.levelNumber;
-                SaveLevelNotPassed();
+                SaveLevelPassed(isPassed);
             }
         }
         levelNumber = 0;
     }
     [Button]
-    private void SetAllLevelsPassed()
+    private void SaveLevelNotPassed()
     {
-        List<LevelData> levels = SaveManager.LoadAllLevelData();
-
-        foreach (LevelData level in levels)
-        {
-            if (!level.isPassed)
-            {
-                levelNumber = level.levelNumber;
-                SaveLevelPassed();
-            }
-        }
-        levelNumber = 0;
+        SaveLevelPassed(false);
+    }
+    [Button]
+    private void SetAllLevelsNotPassed()
+    {
+        SetAllLevelsPassed(false);
     }
     [Button]
     private void ResetData()
     {
         SaveManager.ResetData();
+    }
+    [Button]
+    private bool LevelIsPassed()
+    {
+        bool result = SaveManager.LevelIsPassed(levelNumber);
+        Debug.Log(result);
+        return result;
     }
 }

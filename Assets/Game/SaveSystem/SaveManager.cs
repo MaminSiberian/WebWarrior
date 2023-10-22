@@ -39,8 +39,13 @@ public static class SaveManager
     {
         List<LevelData> levels = LoadAllLevelData();
 
+        if (levels == null) levels = new List<LevelData>();
+
         if (!levels.Any(l => l.levelNumber == levelNumber))
+        {
+            SaveLevelPassed(levelNumber, false);
             return false;
+        }
 
         var level = levels.FirstOrDefault(l => l.levelNumber == levelNumber);
         return level.isPassed;
