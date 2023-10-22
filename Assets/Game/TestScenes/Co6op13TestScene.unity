@@ -3589,16 +3589,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2461204399100186199, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2470018050971528056, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
-      propertyPath: m_LocalPosition.z
+    - target: {fileID: 251661986440163141, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2775745855891584526, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
-      propertyPath: m_LocalPosition.z
+    - target: {fileID: 2561497646545901111, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3216352190305387946, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
@@ -3609,26 +3605,6 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1366389431}
-    - target: {fileID: 3216352190305387946, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
-      propertyPath: timeThrowHook
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3216352190305387946, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
-      propertyPath: timePullUpHook
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3216352190305387946, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
-      propertyPath: forceToThrowObject
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3216352190305387946, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
-      propertyPath: layerGround.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7198464517949501460, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 7615836486623418377, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
       propertyPath: m_RootOrder
       value: 2
