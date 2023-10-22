@@ -7,11 +7,14 @@ namespace HookControl
 {
     public class HookController : MonoBehaviour
     {
-        [SerializeField] internal Transform test;
-        [SerializeField] internal Camera mainCamera;
+        
+        //[SerializeField] internal Camera mainCamera;
         [SerializeField] internal Transform hook;
         [SerializeField] internal Transform pivotHook;
         [SerializeField] internal Rigidbody rb;
+        [Space]
+        [SerializeField] internal Transform defaultPointHook;
+        [SerializeField] internal Transform pointToRaiCast;
         [Space]
         [SerializeField] internal float forceToThrowObject;
         [Space]
@@ -25,7 +28,7 @@ namespace HookControl
         [SerializeField] internal LayerMask layerEnemyAndProjectile;
         [SerializeField] internal LayerMask layerGround;
 
-        [SerializeField] internal Transform pointToRaiCast;
+        
         [Space]
         [Range(0f, 3f)] [SerializeField] internal float timeThrowHook;
         [Range(0f, 3f)] [SerializeField] internal float timePullUpHook;

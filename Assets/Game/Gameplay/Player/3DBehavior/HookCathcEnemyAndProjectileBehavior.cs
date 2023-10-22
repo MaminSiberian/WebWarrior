@@ -1,11 +1,10 @@
-using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace HookControl
 {
-    public class HookCatchPointBehavior : IHookBehavior
+    public class HookCathcEnemyAndProjectileBehavior : IHookBehavior
     {
         private HookController hc;
         private Vector3 startPos;
@@ -14,17 +13,16 @@ namespace HookControl
         private float normalazedPercentOfMaxDistance; // коэффициент для дистанции и времени
         private bool trigerToPullUp = false; // разделяет бросок и притяжение
 
-        public HookCatchPointBehavior(HookController hc)
+        public HookCathcEnemyAndProjectileBehavior(HookController hookController)
         {
-            this.hc = hc;
+            this.hc = hookController;
         }
-
 
         public void Enter()
         {
-            Debug.Log("Enter CathPoint state");
+            Debug.Log("Enter CatchEnemyAndProjectile state");
             trigerToPullUp = false;
-         
+          
             normalazedPercentOfMaxDistance = AccessoryMetods.NormalizedPercentOfDistanceXZ(
                 hc.capturedTarget.transform.position,
                 hc.maxDistanseHook,
@@ -36,19 +34,21 @@ namespace HookControl
             current = 0;
         }
 
+
+
         public void Exit()
         {
-            Debug.Log("Exit CatchPoint state");
-            hc.capturedTarget = null;
+            Debug.Log("Exit CatchEnemyAndProjectile state");
             hc.isEndHook = true;
+            hc.hook.position = hc.defaultPointHook.position;
         }
 
         public void UpdateBehavior()
         {
-            CathPoint();
+            Cath();
         }
 
-        private void CathPoint()
+        private void Cath()
         {
             if (!trigerToPullUp)
             {
@@ -62,18 +62,15 @@ namespace HookControl
 
         private void Back()
         {
-            hc.transform.position = Vector3.Lerp(startPos, endPos, current);           
+            hc.icCaptureSomthing = true;
+            hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timePullUpHook * normalazedPercentOfMaxDistance);
-            if (current < 1)
-            {
-                hc.hook.position = endPos;
-            }
-            if (Vector3.Distance(hc.capturedTarget.transform.position, hc.transform.position) < 0.1f)
-            {
-                hc.transform.position = endPos;
-                hc.hook.transform.position = hc.direction.normalized * hc.idleDistanseHook + hc.transform.position;
+            hc.capturedTarget.transform.position = hc.hook.transform.position;
 
-                hc.SetBehaviorRotation();
+            if (current >= 1)
+            {
+                //hc.hook.position = endPos;
+                hc.SetBehaviorRotationWithObject();
             }
         }
 
@@ -85,8 +82,8 @@ namespace HookControl
             {
                 hc.hook.position = endPos;
                 trigerToPullUp = true;
-                startPos = hc.transform.position;
-                endPos = hc.capturedTarget.transform.position;                
+                startPos = endPos;
+                endPos = hc.direction.normalized * hc.idleDistanseHook + hc.transform.position;
                 current = 0;
             }
         }
