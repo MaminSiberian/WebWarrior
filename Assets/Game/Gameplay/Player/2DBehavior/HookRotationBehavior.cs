@@ -35,15 +35,19 @@ namespace HookControl
             //3d
             Ray ray = hc.mainCamera.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out RaycastHit raycastHit))
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, hc.layerGround))
             {
-                //r dir = raycastHit.point - hc.transform
-                //Debug.Log(raycastHit.point);
+                hc.test.position = raycastHit.point;
+                var lookDir = new Vector3(
+                    raycastHit.point.x,
+                    hc.transform.position.y, // нужно ля того чтобы попорачивался только по оси Y
+                    raycastHit.point.z);
+                hc.transform.LookAt (lookDir);
+
                 hc.direction = new Vector3(
                     raycastHit.point.x - hc.transform.position.x,
-                    hc.transform.position.y, // нужно ля того чтобы попорачивался только по оси Y
-                    raycastHit.point.z - hc.transform.position.z ).normalized;
-                hc.pivotHook.LookAt (hc.direction);
+                    hc.transform.position.y,
+                    raycastHit.point.z - hc.transform.position.z);
             }
 
 

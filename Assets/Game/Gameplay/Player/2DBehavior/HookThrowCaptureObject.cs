@@ -17,7 +17,7 @@ namespace HookControl
         public void Enter()
         {
             Debug.Log("Enter HookThrowCaptureObject state");
-            hc.capturedTarget.GetComponent<Rigidbody2D>().AddForce(hc.direction * hc.forceToThrowObject, ForceMode2D.Impulse);
+            hc.capturedTarget.GetComponent<Rigidbody>().AddForce(hc.direction * hc.forceToThrowObject, ForceMode.Impulse);
             hc.SetBehaviorRotation();
         }
 

@@ -7,8 +7,8 @@ namespace HookControl
     public class HookCathcEnemyAndProjectileBehavior : IHookBehavior
     {
         private HookController hc;
-        private Vector2 startPos;
-        private Vector2 endPos;
+        private Vector3 startPos;
+        private Vector3 endPos;
         private float current;
         private float normalazedPercentOfMaxDistance; // коэффициент для дистанции и времени
         private bool trigerToPullUp = false; // разделяет бросок и притяжение
@@ -23,7 +23,7 @@ namespace HookControl
             Debug.Log("Enter CatchEnemyAndProjectile state");
             trigerToPullUp = false;
           
-            normalazedPercentOfMaxDistance = AccessoryMetods.NormalizedPercentOfDistance(
+            normalazedPercentOfMaxDistance = AccessoryMetods.NormalizedPercentOfDistanceXZ(
                 hc.capturedTarget.transform.position,
                 hc.maxDistanseHook,
                 hc.transform.position);
@@ -62,7 +62,7 @@ namespace HookControl
         private void Back()
         {
             hc.icCaptureSomthing = true;
-            hc.hook.position = Vector2.Lerp(startPos, endPos, current);
+            hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timePullUpHook * normalazedPercentOfMaxDistance);
             hc.capturedTarget.transform.position = hc.hook.transform.position;
 
@@ -75,7 +75,7 @@ namespace HookControl
 
         private void Forward()
         {
-            hc.hook.position = Vector2.Lerp(startPos, endPos, current);
+            hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timeThrowHook * normalazedPercentOfMaxDistance);
             if (current >= 1)
             {

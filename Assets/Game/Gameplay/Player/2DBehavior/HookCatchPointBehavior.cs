@@ -79,7 +79,7 @@ namespace HookControl
 
         private void Forward()
         {
-            hc.hook.position = Vector2.Lerp(startPos, endPos, current);
+            hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timeThrowHook * normalazedPercentOfMaxDistance);
             if (current >= 1)
             {

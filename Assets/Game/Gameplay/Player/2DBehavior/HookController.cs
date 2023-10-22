@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace HookControl
 {
-
     public class HookController : MonoBehaviour
     {
+        [SerializeField] internal Transform test;
         [SerializeField] internal Camera mainCamera;
         [SerializeField] internal Transform hook;
         [SerializeField] internal Transform pivotHook;
@@ -23,6 +23,8 @@ namespace HookControl
         [SerializeField] internal LayerMask layerToTouchAIM;
         [SerializeField] internal LayerMask layerWall;
         [SerializeField] internal LayerMask layerEnemyAndProjectile;
+        [SerializeField] internal LayerMask layerGround;
+
         [SerializeField] internal Transform pointToRaiCast;
         [Space]
         [Range(0f, 3f)] [SerializeField] internal float timeThrowHook;
