@@ -7,8 +7,8 @@ namespace HookControl
     public class HookCatcEmptyhBehavior : IHookBehavior
     {
         private HookController hc;
-        private Vector2 startPos;
-        private Vector2 endPos;
+        private Vector3 startPos;
+        private Vector3 endPos;
         private float current;
         private float normalazedPercentOfMaxDistance; // коэффициент для дистанции и времени
         private bool trigerToPullUp = false; // разделяет бросок и притяжение
@@ -26,10 +26,10 @@ namespace HookControl
             var hit = CheckWall();
             //если стена есть то выссчитываем номарлизованный процент от максимального расстояния, если нет то 1
             normalazedPercentOfMaxDistance = hit.collider != null ?
-                AccessoryMetods.NormalizedPercentOfDistance(hit.point, hc.maxDistanseHook, hc.transform.position) : 1f;
+                AccessoryMetods.NormalizedPercentOfDistanceXZ(hit.point, hc.maxDistanseHook, hc.transform.position) : 1f;
             
-            startPos = hc.direction.normalized * hc.idleDistanseHook + (Vector2)hc.transform.position;
-            endPos = hc.direction.normalized * hc.maxDistanseHook * normalazedPercentOfMaxDistance + (Vector2)hc.transform.position;
+            startPos = hc.direction.normalized * hc.idleDistanseHook + hc.transform.position;
+            endPos = hc.direction.normalized * hc.maxDistanseHook * normalazedPercentOfMaxDistance + hc.transform.position;
             current = 0;
         }
 
@@ -60,7 +60,7 @@ namespace HookControl
 
         private void Back()
         {
-            hc.hook.position = Vector2.Lerp(startPos, endPos, current);
+            hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timePullUpHook * normalazedPercentOfMaxDistance);
             if (current >= 1)
             {
@@ -71,22 +71,23 @@ namespace HookControl
 
         private void Forward()
         {
-            hc.hook.position = Vector2.Lerp(startPos, endPos, current);
+            hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timeThrowHook * normalazedPercentOfMaxDistance);
             if (current >= 1)
             {
                 hc.hook.position = endPos;
                 trigerToPullUp = true;
                 startPos = endPos;
-                endPos = hc.direction.normalized * hc.idleDistanseHook + (Vector2)hc.transform.position;
+                endPos = hc.direction.normalized * hc.idleDistanseHook + hc.transform.position;
                 current = 0;
             }
         }
 
-        private RaycastHit2D CheckWall()
+        private RaycastHit CheckWall()
         {
-            return Physics2D.Raycast(hc.pointToRaiCast.position, hc.direction,
+             Physics.Raycast(hc.pointToRaiCast.position, hc.direction, out RaycastHit hit,
                 hc.maxDistanseHook, hc.layerWall);
+            return hit;
         }
     }
 }

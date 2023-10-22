@@ -28,7 +28,7 @@ namespace HookControl
                 hc.maxDistanseHook,
                 hc.transform.position);
 
-            startPos = hc.direction.normalized * hc.idleDistanseHook + (Vector2)hc.transform.position;
+            startPos = hc.direction.normalized * hc.idleDistanseHook + hc.transform.position;
             //endPos = hc.direction.normalized * hc.maxDistanseHook * normalazedPercentOfMaxDistance + (Vector2)hc.transform.position;
             endPos = hc.capturedTarget.transform.position;
             current = 0;
@@ -82,7 +82,7 @@ namespace HookControl
                 hc.hook.position = endPos;
                 trigerToPullUp = true;
                 startPos = endPos;
-                endPos = hc.direction.normalized * hc.idleDistanseHook + (Vector2)hc.transform.position;
+                endPos = hc.direction.normalized * hc.idleDistanseHook + hc.transform.position;
                 current = 0;
             }
         }

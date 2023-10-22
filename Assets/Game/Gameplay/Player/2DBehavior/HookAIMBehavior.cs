@@ -21,10 +21,10 @@ namespace HookControl
             // находим половину без остатка
             int halfCount = hc.countRaiAIM / 2;
             // переводим вектор направления в угол направления
-            var angleDir = AccessoryMetods.GetAngleFromVector(hc.direction);
+            var angleDir = AccessoryMetods.GetAngleFromVectorXZ(hc.direction);
             // смещаем угол в одну сторону и в последствии юужем прибавлять \|/
             angleDir = angleDir - halfCount * step;
-            RaycastHit2D[] hit = new RaycastHit2D[hc.countRaiAIM];
+            RaycastHit[] hit = new RaycastHit[hc.countRaiAIM];
 
             //var dir = hc.direction;
             // стреляем лучами если находится враг то сразу переходим в состояние взаимодействия с врагом
@@ -50,13 +50,14 @@ namespace HookControl
             }
         }
 
-        private bool CheckingforPoint(RaycastHit2D[] hit)
+        private bool CheckingforPoint(RaycastHit[] hit)
         {
             bool check = false;
             foreach (var h in hit)
             {
                 if ((h.collider != null) && (h.collider.gameObject.CompareTag("PointToCatch")))
                 {
+                    Debug.Log(1);
                     check = true;
                     hc.capturedTarget = h.collider.gameObject;
                     break;
@@ -65,11 +66,12 @@ namespace HookControl
             return check;
         }
 
-        private bool CheckingForEnemyOrProjectile(RaycastHit2D[] hit)
+        private bool CheckingForEnemyOrProjectile(RaycastHit[] hit)
         {
             bool check = false;
             foreach (var h in hit)
             {
+                Debug.Log("пока без проджектайлов");
                 if ((h.collider != null) && (h.collider.gameObject.CompareTag("Enemy")))
                 {
                     check = true;
@@ -80,19 +82,21 @@ namespace HookControl
             return check;
         }
 
-        private RaycastHit2D[] RaiCast(RaycastHit2D[] hit, float angleDir, float step)
+        private RaycastHit[] RaiCast(RaycastHit[] hit, float angleDir, float step)
         {
-            var dir = AccessoryMetods.GetVectorFromAngle(angleDir);
+            Vector3 dir = AccessoryMetods.GetVectorFromAngleXZ(angleDir);
+            //Debug.Log(dir);
 
             for (int i = 0; i < hc.countRaiAIM; i++)
             {
                 Debug.DrawRay(hc.pointToRaiCast.position, dir * hc.maxDistanseHook, Color.red, 1);
-                hit[i] = Physics2D.Raycast(
+                Physics.Raycast(
                     hc.pointToRaiCast.position,
                     dir,
+                    out hit[i],
                     hc.maxDistanseHook,
                     hc.layerToTouchAIM);
-                dir = AccessoryMetods.GetVectorFromAngle(angleDir + step * (i + 1));
+                dir = AccessoryMetods.GetVectorFromAngleXZ(angleDir + step * (i + 1));
             }
             return hit;
         }

@@ -13,6 +13,15 @@ public static class AccessoryMetods
         return normalazedPercent;
     }
 
+    public static float NormalizedPercentOfDistanceXZ(Vector3 targetPoint, float maxDistance, Vector3 referencePoint)
+    {
+        float distance = Vector3.Distance(targetPoint, referencePoint);
+        float onePercent = maxDistance * 0.01f;
+        float percent = (distance / onePercent);
+        var normalazedPercent = percent * 0.01f;
+        return normalazedPercent;
+    }
+
     public static bool CheckVisible(Transform from, Transform target, float distance, LayerMask mask)
     {
         bool result = false;
@@ -101,6 +110,12 @@ public static class AccessoryMetods
         float angleRad = angle * (Mathf.PI / 180f);
         return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
     }
+    public static Vector3 GetVectorFromAngleXZ(float angle)
+    {
+        // angle = 0 -> 360
+        float angleRad = angle * (Mathf.PI / 180f);
+        return new Vector3(Mathf.Cos(angleRad),0f, Mathf.Sin(angleRad));
+    }
 
 
     public static int GetAngleFromVectorInt(Vector3 direction)
@@ -115,6 +130,15 @@ public static class AccessoryMetods
     {
         direction = direction.normalized;
         float angle = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+        if (angle < 0) angle += 360;
+
+        return angle;
+    }
+
+    public static float GetAngleFromVectorXZ(Vector3 direction)
+    {
+        direction = direction.normalized;
+        float angle = (Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg);
         if (angle < 0) angle += 360;
 
         return angle;

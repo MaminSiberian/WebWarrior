@@ -11,11 +11,12 @@ namespace HookControl
         [SerializeField] internal Camera mainCamera;
         [SerializeField] internal Transform hook;
         [SerializeField] internal Transform pivotHook;
+        [SerializeField] internal Rigidbody rb;
         [Space]
         [SerializeField] internal float forceToThrowObject;
         [Space]
         [Range(2, 10)] [SerializeField] internal float maxDistanseHook;
-        [Range(1, 9)] [SerializeField] internal float idleDistanseHook;
+        [Range(0, 9)] [SerializeField] internal float idleDistanseHook;
         [Space]
         [Range(0, 30)] [SerializeField] internal float triggerAngleAIM;
         [Range(0, 10)] [SerializeField] internal int countRaiAIM;
@@ -30,7 +31,7 @@ namespace HookControl
 
         private Dictionary<Type, IHookBehavior> behavioraMap;
         internal IHookBehavior behaviorCurrent;
-        [SerializeField] internal Vector2 direction;
+        [SerializeField] internal Vector3 direction;
         [SerializeField] public bool isActiveHook = false;
         [SerializeField] public bool isEndHook = true;
         [SerializeField] internal bool icCaptureSomthing = false;
@@ -147,11 +148,12 @@ namespace HookControl
             Gizmos.DrawRay(transform.position, direction * maxDistanseHook / 2);
             Gizmos.color = Color.green;
 
-            angleDirection = AccessoryMetods.GetAngleFromVector(direction);
-            //Debug.Log(transform.position + "  " +  direction + " "+ angleDirection);
+            angleDirection = AccessoryMetods.GetAngleFromVectorXZ(direction);
+           // Debug.Log(transform.position + "  " +  direction + " "+ angleDirection);
 
-            Vector2 maxAngle = AccessoryMetods.GetVectorFromAngle(angleDirection + triggerAngleAIM);
-            Vector2 minAngle = AccessoryMetods.GetVectorFromAngle(angleDirection - triggerAngleAIM);
+            Vector3 maxAngle = AccessoryMetods.GetVectorFromAngleXZ(angleDirection + triggerAngleAIM);
+            //Debug.Log(maxAngle);
+            Vector3 minAngle = AccessoryMetods.GetVectorFromAngleXZ(angleDirection - triggerAngleAIM);
             Gizmos.DrawRay(pointToRaiCast.position, maxAngle * maxDistanseHook / 2);
             Gizmos.DrawRay(pointToRaiCast.position, minAngle * maxDistanseHook / 2);
         }
