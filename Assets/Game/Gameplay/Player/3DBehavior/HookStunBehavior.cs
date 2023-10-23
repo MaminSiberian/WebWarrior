@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace HookControl
 {
-    public class HookStanBehavior : IHookBehavior
+    public class HookStunBehavior : IHookBehavior
     {
         private HookController hc;
         private float currentTimeStan;
 
-        public HookStanBehavior(HookController hc)
+        public HookStunBehavior(HookController hc)
         {
             this.hc = hc;
         }
@@ -17,7 +17,7 @@ namespace HookControl
         {
             //Debug.Log("Enter HookStabBehavior state");
             EventSystem.SendHookStan();
-            currentTimeStan = hc.timeStan;
+            currentTimeStan = hc.timeStun;
         }
 
         public void Exit()

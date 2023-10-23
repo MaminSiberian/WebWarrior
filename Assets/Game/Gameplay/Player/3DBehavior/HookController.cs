@@ -24,14 +24,14 @@ namespace HookControl
         [Space]
         [Range(2, 10)] [SerializeField] internal float maxDistanseHook;
         //[Range(0, 9)] [SerializeField] internal float idleDistanseHook;
-        [Header("¬ременные интервалы (возможно стоит заменить на animation curve)")]
-        [Header("бросок, прит€гивание, врем€ кайота, стан")]
+        [Header("Time intervals (it may be worth replacing with animation curve)")]
+        [Header("throw, pullUp, time coyote, stun")]
         [Space]
         [Range(0f, 3f)] [SerializeField] internal float timeThrowHook;
         [Range(0f, 3f)] [SerializeField] internal float timePullUpHook;
         [Range(0, 1)] [SerializeField] private float timeCaiot;
-        [Range(0, 5)] [SerializeField] internal float timeStan;
-        [Header("ѕараметры помошника в наведении")]
+        [Range(0, 5)] [SerializeField] internal float timeStun;
+        [Header("Parameters of the assistant in the guidance")]
         [Space]
         [Range(0, 30)] [SerializeField] internal float triggerAngleAIM;
         [Range(0, 10)] [SerializeField] internal int countRaiAIM;
@@ -45,7 +45,7 @@ namespace HookControl
         internal IHookBehavior behaviorCurrent;
         internal IHookBehavior behaviorPrevios;
 
-        [Header("ѕараметры дл€ удобства дебага")]
+        [Header("Parameters for the convenience of debag")]
         [Space]
         [SerializeField] internal Vector3 direction;
         [SerializeField] public bool isActiveHook = false;
@@ -76,7 +76,7 @@ namespace HookControl
             this.behavioraMap[typeof(HookCathcEnemyAndProjectileBehavior)] = new HookCathcEnemyAndProjectileBehavior(this);
             this.behavioraMap[typeof(HookRotationWithObjectBehavior)] = new HookRotationWithObjectBehavior(this);
             this.behavioraMap[typeof(HookThrowCaptureObject)] = new HookThrowCaptureObject(this);
-            this.behavioraMap[typeof(HookStanBehavior)] = new HookStanBehavior(this);
+            this.behavioraMap[typeof(HookStunBehavior)] = new HookStunBehavior(this);
         }
         private void SetBehaviorDefault()
         {
@@ -123,7 +123,7 @@ namespace HookControl
 
         public void SetBehaviorStan()
         {
-            var behavior = this.GetBehavior<HookStanBehavior>();
+            var behavior = this.GetBehavior<HookStunBehavior>();
             this.SetBehavior(behavior);
         }
 
