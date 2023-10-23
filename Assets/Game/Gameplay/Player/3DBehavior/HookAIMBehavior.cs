@@ -15,37 +15,36 @@ namespace HookControl
 
         public void Enter()
         {
-            Debug.Log("Start AIM state");
-            // вычисляем угол между лучами
+            //Debug.Log("Start AIM state");
+            // calculate the angle between the rays
             float step = (hc.triggerAngleAIM * 2) / (hc.countRaiAIM - 1);
-            // находим половину без остатка
+            // find half without remainder
             int halfCount = hc.countRaiAIM / 2;
-            // переводим вектор направления в угол направления
+            // converts a direction vector to a direction angle
             var angleDir = AccessoryMetods.GetAngleFromVectorXZ(hc.direction);
-            // смещаем угол в одну сторону и в последствии юужем прибавлять \|/
+            // shifts the angle to one side and subsequently we will add \|/
             angleDir = angleDir - halfCount * step;
             RaycastHit[] hit = new RaycastHit[hc.countRaiAIM];
 
             //var dir = hc.direction;
-            // стреляем лучами если находится враг то сразу переходим в состояние взаимодействия с врагом
+            //  
             hit = RaiCast(hit, angleDir, step);
-            //если врага нет, то проверяем на наличие точек и если она есть,
-            //то переходим в состояние взаимодействия с точкой. Так сделано так, потому что враг в приоритете
+
 
             if (CheckingForEnemyOrProjectile(hit))
             {
-                Debug.Log("Переход в захват врага или пули");
+                //Debug.Log("Переход в захват врага или пули");
                 hc.SetBehaviorCatchEnemyAndProjectile();
             }
             else if (CheckingforPoint(hit))
             {
-                Debug.Log("Переход в захват точки");
+                //Debug.Log("Переход в захват точки");
                 hc.SetBehaviorCarchPoint();
             }
             else
             {
                 //если и точек нет то переходим в состояние пустого броска
-                Debug.Log("Переход в пустой");
+                //Debug.Log("Переход в пустой");
                 hc.SetBehaviorCatchEmpty();
             }
         }
@@ -55,9 +54,8 @@ namespace HookControl
             bool check = false;
             foreach (var h in hit)
             {
-                if ((h.collider != null) && (h.collider.gameObject.CompareTag("PointToCatch")))
+                if ((h.collider != null) && (h.collider.gameObject.CompareTag("Platform")))
                 {
-                    Debug.Log(1);
                     check = true;
                     hc.capturedTarget = h.collider.gameObject;
                     break;
@@ -71,9 +69,9 @@ namespace HookControl
             bool check = false;
             foreach (var h in hit)
             {
-                Debug.Log("пока без проджектайлов");
-                if ((h.collider != null) && (h.collider.gameObject.CompareTag("Enemy")))
+                if ((h.collider != null) && (h.collider.gameObject.GetComponent<IGrabable>() != null))
                 {
+                    hc.grabableTarget = h.collider.gameObject.GetComponent<IGrabable>();
                     check = true;
                     hc.capturedTarget = h.collider.gameObject;
                     break;
@@ -103,7 +101,7 @@ namespace HookControl
 
         public void Exit()
         {
-            Debug.Log("Exit AIM state");
+            // Debug.Log("Exit AIM state");
         }
 
         public void UpdateBehavior()

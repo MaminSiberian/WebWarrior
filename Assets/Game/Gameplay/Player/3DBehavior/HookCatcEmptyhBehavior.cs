@@ -7,11 +7,11 @@ namespace HookControl
     public class HookCatcEmptyhBehavior : IHookBehavior
     {
         private HookController hc;
-        private Vector3 startPos;
-        private Vector3 endPos;
-        private float current;
-        private float normalazedPercentOfMaxDistance; // коэффициент для дистанции и времени
-        private bool trigerToPullUp = false; // разделяет бросок и притяжение
+        //private Vector3 startPos;
+        //private Vector3 endPos;
+        //private float current;
+        //private float normalazedPercentOfMaxDistance; //coefficient for distance and time
+        //private bool trigerToPullUp = false; // separates the throw and the attraction
 
         public HookCatcEmptyhBehavior(HookController hookController)
         {
@@ -20,24 +20,24 @@ namespace HookControl
 
         public void Enter()
         {
-            Debug.Log("Enter CathEmpty state");
-            trigerToPullUp = false;
-            //проверка на наличии стены
+            //Debug.Log("Enter CathEmpty state");
+            hc.trigerToPullUp = false;
+            //checking for the presence of a wall
             var hit = CheckWall();
-            //если стена есть то выссчитываем номарлизованный процент от максимального расстояния, если нет то 1
-            normalazedPercentOfMaxDistance = hit.collider != null ?
+            //if there is a wall, then we calculate the normalized percentage of the maximum distance, if not, then 1
+            hc.normalazedPercentOfMaxDistance = hit.collider != null ?
                 AccessoryMetods.NormalizedPercentOfDistanceXZ(hit.point, hc.maxDistanseHook, hc.transform.position) : 1f;
             
-            startPos = hc.direction.normalized * hc.idleDistanseHook + hc.transform.position;
-            endPos = hc.direction.normalized * hc.maxDistanseHook * normalazedPercentOfMaxDistance + hc.transform.position;
-            current = 0;
+            hc.startPos = hc.defaultPointHook.position;
+            hc.endPos = hc.direction.normalized * hc.maxDistanseHook * hc.normalazedPercentOfMaxDistance + hc.transform.position;
+            hc.current = 0;
         }
 
 
 
         public void Exit()
         {
-            Debug.Log("Exit CathEmpty state");
+            //Debug.Log("Exit CathEmpty state");
             hc.isEndHook = true;
         }
 
@@ -48,7 +48,7 @@ namespace HookControl
 
         private void Cath()
         {
-            if (!trigerToPullUp)
+            if (!hc.trigerToPullUp)
             {
                 Forward();
             }
@@ -61,11 +61,11 @@ namespace HookControl
         private void Back()
         {
             EventSystem.SendPullBackHook();
-            hc.hook.position = Vector3.Lerp(startPos, endPos, current);
-            current += Time.deltaTime / (hc.timePullUpHook * normalazedPercentOfMaxDistance);
-            if (current >= 1)
+            hc.hook.position = Vector3.Lerp(hc.startPos, hc.endPos, hc.current);
+            hc.current += Time.deltaTime / (hc.timePullUpHook * hc.normalazedPercentOfMaxDistance);
+            if (hc.current >= 1)
             {
-                hc.hook.position = endPos;
+                hc.hook.position = hc.endPos;
                 hc.SetBehaviorRotation();
             }
         }
@@ -73,15 +73,15 @@ namespace HookControl
         private void Forward()
         {
             EventSystem.SendThrowHook();
-            hc.hook.position = Vector3.Lerp(startPos, endPos, current);
-            current += Time.deltaTime / (hc.timeThrowHook * normalazedPercentOfMaxDistance);
-            if (current >= 1)
+            hc.hook.position = Vector3.Lerp(hc.startPos, hc.endPos, hc.current);
+            hc.current += Time.deltaTime / (hc.timeThrowHook * hc.normalazedPercentOfMaxDistance);
+            if (hc.current >= 1)
             {
-                hc.hook.position = endPos;
-                trigerToPullUp = true;
-                startPos = endPos;
-                endPos = hc.direction.normalized * hc.idleDistanseHook + hc.transform.position;
-                current = 0;
+                hc.hook.position = hc.endPos;
+                hc.trigerToPullUp = true;
+                hc.startPos = hc.endPos;
+                hc.endPos = hc.defaultPointHook.position;
+                hc.current = 0;
             }
         }
 

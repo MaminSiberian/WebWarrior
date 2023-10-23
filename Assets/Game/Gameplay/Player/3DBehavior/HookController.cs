@@ -8,7 +8,7 @@ namespace HookControl
 {
     public class HookController : MonoBehaviour
     {
-        [Header("Требуемые компоненты")]
+        [Header("Required components")]
         [Space]
         [SerializeField] internal Transform hook;
         //[SerializeField] internal Transform pivotHook;
@@ -16,14 +16,14 @@ namespace HookControl
         [SerializeField] internal Transform defaultPointHook;
         [SerializeField] internal Transform pointToRaiCast;
 
-        [Header("Сила с которой будет кинут враг")]
+        [Header("The force with which the enemy will be thrown")]
         [Space]
         [SerializeField] internal float forceToThrowObject;
 
-        [Header("Максимальная дальность зацепа и минимальное положение")]
+        [Header("Максимальная дальность  и минимальное положение зацепа")]
         [Space]
         [Range(2, 10)] [SerializeField] internal float maxDistanseHook;
-        [Range(0, 9)] [SerializeField] internal float idleDistanseHook;
+        //[Range(0, 9)] [SerializeField] internal float idleDistanseHook;
         [Header("Временные интервалы (возможно стоит заменить на animation curve)")]
         [Header("бросок, притягивание, время кайота, стан")]
         [Space]
@@ -53,7 +53,12 @@ namespace HookControl
         [SerializeField] internal bool icCaptureSomthing = false;
         [SerializeField] internal float angleDirection;
         [SerializeField] internal GameObject capturedTarget;
-        // [SerializeField] internal float currentMaxDistanceHook;
+        [SerializeField] internal IGrabable grabableTarget;
+        internal Vector3 startPos;
+        internal Vector3 endPos;
+        internal float current;
+        internal float normalazedPercentOfMaxDistance; //coefficient for distance and time
+        internal bool trigerToPullUp = false; // separates the throw and the attraction
 
         private void Start()
         {
@@ -166,7 +171,7 @@ namespace HookControl
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(transform.position, direction * maxDistanseHook / 2);
+            Gizmos.DrawRay(transform.position, direction.normalized * maxDistanseHook / 2);
             Gizmos.color = Color.green;
 
             angleDirection = AccessoryMetods.GetAngleFromVectorXZ(direction);

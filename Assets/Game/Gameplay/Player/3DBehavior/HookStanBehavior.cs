@@ -15,22 +15,23 @@ namespace HookControl
         }
         public void Enter()
         {
-            Debug.Log("Enter HookStabBehavior state");
+            //Debug.Log("Enter HookStabBehavior state");
             EventSystem.SendHookStan();
             currentTimeStan = hc.timeStan;
         }
 
         public void Exit()
         {
-            Debug.Log("Exit HookStabBehavior state");
-            hc.capturedTarget = null;
-            hc.isEndHook = true;
+            Debug.Log("need test winth enemy");
+            //Debug.Log("Exit HookStabBehavior state");
+            //hc.capturedTarget = null;
+            //hc.isEndHook = true;
         }
 
         public void UpdateBehavior()
         {
             currentTimeStan -= Time.deltaTime;
-            if (currentTimeStan <=0 )
+            if (currentTimeStan <= 0)
             {
                 hc.SetBehavior(hc.behaviorPrevios);
             }

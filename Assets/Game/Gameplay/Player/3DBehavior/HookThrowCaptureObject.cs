@@ -16,7 +16,7 @@ namespace HookControl
 
         public void Enter()
         {
-            Debug.Log("Enter HookThrowCaptureObject state");
+            //Debug.Log("Enter HookThrowCaptureObject state");
             EventSystem.SendHookThrowObject();
             hc.capturedTarget.GetComponent<Rigidbody>().AddForce(hc.direction * hc.forceToThrowObject, ForceMode.Impulse);
             hc.SetBehaviorRotation();
@@ -24,7 +24,8 @@ namespace HookControl
 
         public void Exit()
         {
-            hc.capturedTarget.GetComponent<IGrabable>()?.OnRelease();
+            hc.grabableTarget.OnRelease();
+            hc.grabableTarget = null;
             hc.capturedTarget = null;
             hc.isEndHook = true;
         }
