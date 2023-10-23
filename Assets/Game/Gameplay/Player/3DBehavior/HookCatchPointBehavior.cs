@@ -38,6 +38,7 @@ namespace HookControl
 
         public void Exit()
         {
+            hc.capturedTarget.GetComponent<IGrabable>()?.OnRelease();
             Debug.Log("Exit CatchPoint state");
             hc.hook.position = hc.defaultPointHook.position;
             hc.capturedTarget = null;
@@ -63,6 +64,7 @@ namespace HookControl
 
         private void Back()
         {
+            EventSystem.SendPullBackHook();
             hc.transform.position = Vector3.Lerp(startPos, endPos, current);           
             current += Time.deltaTime / (hc.timePullUpHook * normalazedPercentOfMaxDistance);
             if (current < 1)
@@ -80,10 +82,12 @@ namespace HookControl
 
         private void Forward()
         {
+            EventSystem.SendThrowHook();
             hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timeThrowHook * normalazedPercentOfMaxDistance);
             if (current >= 1)
             {
+                hc.capturedTarget.GetComponent<IGrabable>()?.OnGrab();
                 hc.hook.position = endPos;
                 trigerToPullUp = true;
                 startPos = hc.transform.position;

@@ -16,6 +16,7 @@ namespace HookControl
         public void Enter()
         {
             Debug.Log("Enter HookStabBehavior state");
+            EventSystem.SendHookStan();
             currentTimeStan = hc.timeStan;
         }
 

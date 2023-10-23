@@ -62,6 +62,7 @@ namespace HookControl
 
         private void Back()
         {
+            EventSystem.SendPullBackHook();
             hc.icCaptureSomthing = true;
             hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timePullUpHook * normalazedPercentOfMaxDistance);
@@ -76,10 +77,12 @@ namespace HookControl
 
         private void Forward()
         {
+            EventSystem.SendThrowHook();
             hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timeThrowHook * normalazedPercentOfMaxDistance);
             if (current >= 1)
             {
+                hc.capturedTarget.GetComponent<IGrabable>()?.OnGrab();
                 hc.hook.position = endPos;
                 trigerToPullUp = true;
                 startPos = endPos;

@@ -60,6 +60,7 @@ namespace HookControl
 
         private void Back()
         {
+            EventSystem.SendPullBackHook();
             hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timePullUpHook * normalazedPercentOfMaxDistance);
             if (current >= 1)
@@ -71,6 +72,7 @@ namespace HookControl
 
         private void Forward()
         {
+            EventSystem.SendThrowHook();
             hc.hook.position = Vector3.Lerp(startPos, endPos, current);
             current += Time.deltaTime / (hc.timeThrowHook * normalazedPercentOfMaxDistance);
             if (current >= 1)
