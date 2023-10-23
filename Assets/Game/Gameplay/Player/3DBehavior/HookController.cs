@@ -38,7 +38,7 @@ namespace HookControl
         [SerializeField] internal LayerMask layerToTouchAIM;
         [SerializeField] internal LayerMask layerWall;
         [SerializeField] internal LayerMask layerEnemyAndProjectile;
-        [SerializeField] internal LayerMask layerGround;        
+        [SerializeField] internal LayerMask layerGround;
 
 
         private Dictionary<Type, IHookBehavior> behavioraMap;
@@ -54,6 +54,7 @@ namespace HookControl
         [SerializeField] internal float angleDirection;
         [SerializeField] internal GameObject capturedTarget;
         [SerializeField] internal IGrabable grabableTarget;
+        [SerializeField] private PlayerData data;
         internal Vector3 startPos;
         internal Vector3 endPos;
         internal float current;
@@ -64,6 +65,8 @@ namespace HookControl
         {
             this.InitBehaviors();
             this.SetBehaviorDefault();
+            data = FindObjectOfType<PlayerData>();
+            EventSystem.OnDataPlayerChanged.AddListener(SetData);
         }
 
         private void InitBehaviors()
@@ -181,6 +184,23 @@ namespace HookControl
             Gizmos.DrawRay(pointToRaiCast.position, maxAngle * maxDistanseHook / 2);
             Gizmos.DrawRay(pointToRaiCast.position, minAngle * maxDistanseHook / 2);
         }
+        private void SetData()
+        {
+            Debug.Log(2);
+            this.forceToThrowObject = data.forceToThrowObject;
+            this.maxDistanseHook = data.maxDistanseHook;
+            this.timeThrowHook = data.timeThrowHook;
+            this.timePullUpHook = data.timePullUpHook;
+            this.timeCaiot = data.timeCaiot;
+            this.timeStun = data.timeStun;
+            this.triggerAngleAIM = data.triggerAngleAIM;
+            this.countRaiAIM = data.countRaiAIM;
+            this.layerToTouchAIM = data.layerToTouchAIM;
+            this.layerWall = data.layerWall;
+            this.layerEnemyAndProjectile = data.layerEnemyAndProjectile;
+        }
     }
+
+
 
 }

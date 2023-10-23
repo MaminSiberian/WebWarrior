@@ -8,6 +8,8 @@ public static class EventSystem
     //public static UnityEvent OnDestroyBase = new UnityEvent();
     //public static UnityEvent OnChencheAmountMony = new UnityEvent();
     public static UnityEvent OnPlayerDeath = new UnityEvent();
+    public static UnityEvent OnDataPlayerChanged = new UnityEvent();
+
     public static UnityEvent OnThrowHook = new UnityEvent();
     public static UnityEvent OnPullBackHook = new UnityEvent();
     public static UnityEvent OnHookCatch = new UnityEvent();
@@ -20,6 +22,11 @@ public static class EventSystem
     public static void SendPlayerDeath()
     {
         OnPlayerDeath.Invoke();
+    }
+
+    public static void SendDataPlayerChanged()
+    {
+        OnDataPlayerChanged.Invoke();
     }
 
     public static void SendThrowHook()

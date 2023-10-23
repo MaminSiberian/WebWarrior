@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5552171217362380631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6933551849070133306}
+  - component: {fileID: 6595549218332693291}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6933551849070133306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5552171217362380631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2544515, y: -0.20531178, z: 6.960699}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6595549218332693291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5552171217362380631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9d29b1878462f4187b6486e51dedcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hook: {fileID: 0}
+  rb: {fileID: 0}
+  defaultPointHook: {fileID: 0}
+  pointToRaiCast: {fileID: 0}
+  forceToThrowObject: 0
+  maxDistanseHook: 0
+  timeThrowHook: 0
+  timePullUpHook: 0
+  timeCaiot: 0
+  timeStun: 0
+  triggerAngleAIM: 0
+  countRaiAIM: 0
+  layerToTouchAIM:
+    serializedVersion: 2
+    m_Bits: 0
+  layerWall:
+    serializedVersion: 2
+    m_Bits: 0
+  layerEnemyAndProjectile:
+    serializedVersion: 2
+    m_Bits: 0
+  layerGround:
+    serializedVersion: 2
+    m_Bits: 0
