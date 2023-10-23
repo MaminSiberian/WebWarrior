@@ -18,11 +18,12 @@ namespace Enemies
         }
         private void FixedUpdate()
         {
-            if (state == State.Released && rb.velocity == Vector3.zero)
+            /*if (state == State.Released && rb.velocity == Vector3.zero)
             {
+                Debug.Log("Here");
                 StartPatrolling();
                 return;
-            }
+            }*/
 
             if (state == State.Attacking 
                 || state == State.Death
@@ -126,11 +127,13 @@ namespace Enemies
         #region GRAB
         public void OnGrab()
         {
+            Debug.Log("Grab");
             state = State.Grabbed;
         }
 
         public void OnRelease()
         {
+            Debug.Log("Release");
             state = State.Released;
         }
         #endregion

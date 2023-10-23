@@ -1,3 +1,4 @@
+using HookControl;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,8 @@ namespace Enemies
         {
             rb = GetComponent<Rigidbody>();
             data = FindAnyObjectByType<EnemyData>();
-            player = FindAnyObjectByType<TestPlayer>().transform;
+            player = FindAnyObjectByType<HookController>().transform;
+            //player = FindAnyObjectByType<TestPlayer>().transform;
             Physics.IgnoreCollision(GetComponent<Collider>(), player.GetComponent<Collider>());
             SetData();
         }
