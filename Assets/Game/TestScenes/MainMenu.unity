@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 388962499}
   - component: {fileID: 388962498}
+  - component: {fileID: 388962500}
   m_Layer: 0
   m_Name: SaveTester
   m_TagString: Untagged
@@ -247,7 +248,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNumber: 0
-  isPassed: 0
 --- !u!4 &388962499
 Transform:
   m_ObjectHideFlags: 0
@@ -263,6 +263,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &388962500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388962497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93799c7102a798547820429cdb3b80c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallsLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &965528821
 GameObject:
   m_ObjectHideFlags: 0
