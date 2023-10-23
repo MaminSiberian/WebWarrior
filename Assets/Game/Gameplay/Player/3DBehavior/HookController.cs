@@ -20,7 +20,7 @@ namespace HookControl
         [Space]
         [SerializeField] internal float forceToThrowObject;
 
-        [Header("Максимальная дальность  и минимальное положение зацепа")]
+        [Header("Maximum range of the hook")]
         [Space]
         [Range(2, 10)] [SerializeField] internal float maxDistanseHook;
         //[Range(0, 9)] [SerializeField] internal float idleDistanseHook;
