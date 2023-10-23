@@ -176,12 +176,6 @@ namespace HookControl
             Gizmos.DrawRay(pointToRaiCast.position, maxAngle * maxDistanseHook / 2);
             Gizmos.DrawRay(pointToRaiCast.position, minAngle * maxDistanseHook / 2);
         }
-
-        [Button]
-        private void TestStan()
-        {
-            SetBehaviorStan();
-        }
     }
 
 }

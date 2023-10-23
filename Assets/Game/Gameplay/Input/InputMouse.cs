@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using HookControl;
 
-public class TestHookControl : MonoBehaviour
+public class InputMouse : MonoBehaviour
 {
     [SerializeField] private HookController hc;
     [SerializeField] internal Camera mainCamera;
     private Ray ray;
+
+    private void Start()
+    {
+        hc = FindAnyObjectByType<HookController>();
+        mainCamera = Camera.main;
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
