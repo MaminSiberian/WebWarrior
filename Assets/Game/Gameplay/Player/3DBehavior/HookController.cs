@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using NaughtyAttributes;
 
 namespace HookControl
 {
@@ -91,7 +90,9 @@ namespace HookControl
             if (this.behaviorCurrent != null)
                 this.behaviorCurrent.Exit();
 
-            this.behaviorPrevios = behaviorCurrent;
+            if (this.behaviorCurrent != this.GetBehavior<HookStunBehavior>())
+                this.behaviorPrevios = behaviorCurrent;
+
             this.behaviorCurrent = newBehavior;
             this.behaviorCurrent.Enter();
         }
@@ -186,7 +187,6 @@ namespace HookControl
         }
         private void SetData()
         {
-            Debug.Log(2);
             this.forceToThrowObject = data.forceToThrowObject;
             this.maxDistanseHook = data.maxDistanseHook;
             this.timeThrowHook = data.timeThrowHook;
@@ -200,7 +200,4 @@ namespace HookControl
             this.layerEnemyAndProjectile = data.layerEnemyAndProjectile;
         }
     }
-
-
-
 }

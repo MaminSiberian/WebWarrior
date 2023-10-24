@@ -29,7 +29,6 @@ public class PlayerData : MonoBehaviour
 
     private void OnValidate()
     {
-        Debug.Log(1);
         EventSystem.SendDataPlayerChanged();
     }
 }
