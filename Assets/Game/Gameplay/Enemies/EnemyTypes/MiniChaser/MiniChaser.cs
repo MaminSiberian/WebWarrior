@@ -1,23 +1,31 @@
 using DG.Tweening;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Enemies
 {
-    public class MiniChaser : EnemyBase, IDamagable, IGrabable
+    public class MiniChaser : EnemyBase, IDamagable, IGrabable, IDamager
     {
         protected float chasingSpeed;
         protected float attackingSpeed;
         protected float chasingDistance;
         protected float attackingDistance;
 
+        public List<int> layersToDamage { get; protected set; }
+        private int defaultLayer = Layers.defaultLayer;
+        private int playerLayer = Layers.player;
+        private int enemyLayer = Layers.enemy;
+
         #region MONOBEHS
         private void Start()
         {
+            layersToDamage = new List<int>() { playerLayer };
             StartIdle();
         }
         private void FixedUpdate()
         {
-            if (state == State.Released && rb.velocity == Vector3.zero)
+            if (state == State.Released && DistanceToPlayer() >= chasingDistance * 1.5f)
             {
                 StartIdle();
                 return;
@@ -97,7 +105,7 @@ namespace Enemies
         }
         protected override void SetData()
         {
-            chasingSpeed = data.miniChaserChasingDistance;
+            chasingSpeed = data.miniChaserAttackingSpeed;
             attackingSpeed = data.miniChaserAttackingSpeed;
             chasingDistance = data.miniChaserChasingDistance;
             attackingDistance = data.miniChaserAttackingDistance;
@@ -106,12 +114,20 @@ namespace Enemies
         #region GRAB
         public void OnGrab()
         {
+            layersToDamage = new List<int>() { defaultLayer };
             state = State.Grabbed;
         }
 
         public void OnRelease()
         {
+            layersToDamage = new List<int>() { enemyLayer };
             state = State.Released;
+        }
+
+        public void OnDamage()
+        {
+            if (layersToDamage.Any(l => l == enemyLayer))
+                GetDamage();
         }
         #endregion
     }

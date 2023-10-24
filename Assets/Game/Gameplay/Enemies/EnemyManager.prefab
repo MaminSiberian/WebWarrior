@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1518594218625777795
 MonoBehaviour:
@@ -50,22 +50,22 @@ MonoBehaviour:
   _chaserAttackingSpeed: 4
   _chaserChasingDistance: 6
   _chaserAttackingDistance: 2
-  showShooterParams: 1
+  showShooterParams: 0
   _shooterPatrollingSpeed: 2
   _shooterAttackingForce: 300
   _shooterAttackingDistance: 15
   _shooterReloadingTime: 4
-  showCarrierParams: 0
+  showCarrierParams: 1
   _carrierPatrollingSpeed: 2
-  _carrierChasingSpeed: 4
+  _carrierChasingSpeed: 2
   _carrierAttackingSpeed: 7
-  _carrierChasingDistance: 10
+  _carrierChasingDistance: 6
   _carrierAttackingDistance: 3
-  showMiniChaserParams: 0
-  _miniChaserChasingSpeed: 4
-  _miniChaserAttackingSpeed: 7
+  showMiniChaserParams: 1
+  _miniChaserChasingSpeed: 0.001
+  _miniChaserAttackingSpeed: 2
   _miniChaserChasingDistance: 30
-  _miniChaserAttackingDistance: 3
+  _miniChaserAttackingDistance: 1
   showTurretParams: 0
   _turretPatrollingSpeed: 2
   _turretAttackingForce: 450
