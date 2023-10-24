@@ -1,9 +1,10 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections.Generic;
 
 namespace Enemies
 {
-    public class Chaser : EnemyBase, IDamagable, IGrabable
+    public class Chaser : EnemyBase, IDamagable, IGrabable, IDamager
     {
         protected float patrollingSpeed;
         protected float chasingSpeed;
@@ -11,19 +12,23 @@ namespace Enemies
         protected float chasingDistance;
         protected float attackingDistance;
 
+        public List<int> layersToDamage { get; protected set; }
+        private int playerLayer = Layers.player;
+        private int enemyLayer = Layers.enemy;
+
         #region MONOBEHS
         private void Start()
         {
+            layersToDamage.Add(playerLayer);
             StartPatrolling();
         }
         private void FixedUpdate()
         {
-            /*if (state == State.Released && rb.velocity == Vector3.zero)
+            if (state == State.Released && DistanceToPlayer() >= chasingDistance * 2)
             {
-                Debug.Log("Here");
-                StartPatrolling();
+                StartIdle();
                 return;
-            }*/
+            }
 
             if (state == State.Attacking 
                 || state == State.Death
@@ -108,6 +113,7 @@ namespace Enemies
 
         public void GetDamage()
         {
+            Debug.Log(name + " damaged");
             OnEnemyDeath();
         }
         protected override void OnEnemyDeath()
@@ -128,12 +134,14 @@ namespace Enemies
         public void OnGrab()
         {
             Debug.Log("Grab");
+            layersToDamage.Remove(playerLayer);
             state = State.Grabbed;
         }
 
         public void OnRelease()
         {
             Debug.Log("Release");
+            layersToDamage.Add(enemyLayer);
             state = State.Released;
         }
         #endregion
