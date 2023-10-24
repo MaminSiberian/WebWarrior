@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Enemies
 {
@@ -13,13 +14,14 @@ namespace Enemies
         protected float attackingDistance;
 
         public List<int> layersToDamage { get; protected set; }
+        private int defaultLayer = Layers.defaultLayer;
         private int playerLayer = Layers.player;
         private int enemyLayer = Layers.enemy;
 
         #region MONOBEHS
         private void Start()
         {
-            layersToDamage.Add(playerLayer);
+            layersToDamage = new List<int>() { playerLayer };
             StartPatrolling();
         }
         private void FixedUpdate()
@@ -72,6 +74,7 @@ namespace Enemies
         #region CHANGING_STATES
         private void StartIdle()
         {
+            rb.velocity = Vector3.zero;
             state = State.Idle;
         }
         private void StartPatrolling()
@@ -134,15 +137,21 @@ namespace Enemies
         public void OnGrab()
         {
             Debug.Log("Grab");
-            layersToDamage.Remove(playerLayer);
+            layersToDamage = new List<int>() { defaultLayer };
             state = State.Grabbed;
         }
 
         public void OnRelease()
         {
             Debug.Log("Release");
-            layersToDamage.Add(enemyLayer);
+            layersToDamage = new List<int>() { enemyLayer };
             state = State.Released;
+        }
+
+        public void OnDamage()
+        {
+            if (layersToDamage.Any(l => l == enemyLayer))
+                GetDamage();
         }
         #endregion
     }

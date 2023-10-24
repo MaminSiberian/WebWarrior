@@ -6,6 +6,7 @@ public class Projectile : PoolableObject, IGrabable, IDamager
     private Collider coll;
     private Rigidbody rb;
     private Collider sender;
+    private int defaultLayer = Layers.defaultLayer;
     private int wallsLayer = Layers.walls;
     private int playerLayer = Layers.player;
     private int enemyLayer = Layers.enemy;
@@ -16,7 +17,7 @@ public class Projectile : PoolableObject, IGrabable, IDamager
     {
         coll = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
-        layersToDamage.Add(playerLayer);
+        layersToDamage = new List<int>() { playerLayer };
     }
     private void OnDisable()
     {
@@ -42,23 +43,22 @@ public class Projectile : PoolableObject, IGrabable, IDamager
             Deactivate();
             return;
         }
-
-        var obj = collision.gameObject.GetComponent<IDamagable>();
-
-        if (obj != null)
-        {
-            obj.GetDamage();
-            Deactivate();
-        }
     }
 
     public void OnGrab()
     {
-        layersToDamage.Remove(playerLayer);
+        Debug.Log("Grab");
+        layersToDamage = new List<int>() { defaultLayer };
     }
 
     public void OnRelease()
     {
-        layersToDamage.Add(enemyLayer);
+        Debug.Log("Release");
+        layersToDamage = new List<int>() { enemyLayer };
+    }
+
+    public void OnDamage()
+    {
+        Deactivate();
     }
 }

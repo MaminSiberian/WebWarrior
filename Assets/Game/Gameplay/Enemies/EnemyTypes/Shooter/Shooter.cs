@@ -1,8 +1,10 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Enemies
 {
-    public class Shooter : EnemyBase, IDamagable, IGrabable
+    public class Shooter : EnemyBase, IDamagable, IGrabable, IDamager
     {
         private float patrollingSpeed;
         private float attackingForce;
@@ -13,11 +15,17 @@ namespace Enemies
         private bool readyToFire = true;
         private float reloadingTimer = 0f;
 
+        public List<int> layersToDamage { get; protected set; }
+        private int defaultLayer = Layers.defaultLayer;
+        private int playerLayer = Layers.player;
+        private int enemyLayer = Layers.enemy;
+
         #region MONOBEHS
         protected override void Awake()
         {
             base.Awake();
             coll = GetComponent<Collider>();
+            layersToDamage = new List<int>() { playerLayer };
         }
         private void Start()
         {
@@ -35,9 +43,9 @@ namespace Enemies
         }
         private void FixedUpdate()
         {
-            if (state == State.Released && rb.velocity == Vector3.zero)
+            if (state == State.Released && DistanceToPlayer() >= attackingDistance * 2)
             {
-                StartPatrolling();
+                StartIdle();
                 return;
             }
 
@@ -140,11 +148,15 @@ namespace Enemies
         #region GRAB
         public void OnGrab()
         {
+            Debug.Log("Grab");
+            layersToDamage = new List<int>() { defaultLayer };
             state = State.Grabbed;
         }
 
         public void OnRelease()
         {
+            Debug.Log("Release");
+            layersToDamage = new List<int>() { enemyLayer };
             state = State.Released;
         }
         #endregion
@@ -161,6 +173,12 @@ namespace Enemies
             attackingForce = data.shooterAttackingForce;
             attackingDistance = data.shooterAttackingDistance;
             reloadingTime = data.shooterReloadingTime;
+        }
+
+        public void OnDamage()
+        {
+            if (layersToDamage.Any(l => l == enemyLayer))
+                GetDamage();
         }
     }
 }

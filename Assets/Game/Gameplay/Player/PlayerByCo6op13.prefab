@@ -5328,7 +5328,7 @@ Transform:
   - {fileID: 885880964013580026}
   - {fileID: 705667730717620727}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3216352190305387946
 MonoBehaviour:
@@ -5346,7 +5346,7 @@ MonoBehaviour:
   rb: {fileID: 2461204399100186199}
   defaultPointHook: {fileID: 705667730717620727}
   pointToRaiCast: {fileID: 2775745855891584526}
-  forceToThrowObject: 10
+  forceToThrowObject: 3
   maxDistanseHook: 10
   idleDistanseHook: 0.6
   timeThrowHook: 0.5

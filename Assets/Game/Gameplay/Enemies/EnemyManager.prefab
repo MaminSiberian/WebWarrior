@@ -50,11 +50,11 @@ MonoBehaviour:
   _chaserAttackingSpeed: 4
   _chaserChasingDistance: 6
   _chaserAttackingDistance: 2
-  showShooterParams: 0
+  showShooterParams: 1
   _shooterPatrollingSpeed: 2
-  _shooterAttackingForce: 450
+  _shooterAttackingForce: 300
   _shooterAttackingDistance: 15
-  _shooterReloadingTime: 1
+  _shooterReloadingTime: 4
   showCarrierParams: 0
   _carrierPatrollingSpeed: 2
   _carrierChasingSpeed: 4
