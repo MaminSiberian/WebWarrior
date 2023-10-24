@@ -142,20 +142,18 @@ namespace Enemies
         public void GetDamage()
         {
             Debug.Log(name + " damaged");
-            //OnEnemyDeath();
+            OnEnemyDeath();
         }
 
         #region GRAB
         public void OnGrab()
         {
-            Debug.Log("Grab");
             layersToDamage = new List<int>() { defaultLayer };
             state = State.Grabbed;
         }
 
         public void OnRelease()
         {
-            Debug.Log("Release");
             layersToDamage = new List<int>() { enemyLayer };
             state = State.Released;
         }

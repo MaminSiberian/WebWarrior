@@ -23,6 +23,7 @@ public class Projectile : PoolableObject, IGrabable, IDamager
     {
         TurnOnCollision();
         rb.velocity = Vector3.zero;
+        layersToDamage = new List<int>() { playerLayer };
     }
     public void TurnOffCollision(Collider sender)
     {
@@ -47,13 +48,11 @@ public class Projectile : PoolableObject, IGrabable, IDamager
 
     public void OnGrab()
     {
-        Debug.Log("Grab");
         layersToDamage = new List<int>() { defaultLayer };
     }
 
     public void OnRelease()
     {
-        Debug.Log("Release");
         layersToDamage = new List<int>() { enemyLayer };
     }
 
