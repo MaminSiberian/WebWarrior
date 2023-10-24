@@ -5197,6 +5197,7 @@ GameObject:
   - component: {fileID: 2732419855774799512}
   - component: {fileID: 3170803123247227718}
   - component: {fileID: 7800454550865332627}
+  - component: {fileID: 8495516499195034967}
   m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
@@ -5269,6 +5270,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &8495516499195034967
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7728441191929356864}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8276790386031036356
 GameObject:
   m_ObjectHideFlags: 0
@@ -5278,9 +5300,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7615836486623418377}
-  - component: {fileID: 8546413030851973743}
   - component: {fileID: 3216352190305387946}
   - component: {fileID: 2461204399100186199}
+  - component: {fileID: 2713367591884938559}
   - component: {fileID: 8739015030634649303}
   - component: {fileID: 3117856660873923383}
   m_Layer: 9
@@ -5306,20 +5328,8 @@ Transform:
   - {fileID: 885880964013580026}
   - {fileID: 705667730717620727}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8546413030851973743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8276790386031036356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed06279ef3fd5f46bd1c74576a52a15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3216352190305387946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5336,8 +5346,9 @@ MonoBehaviour:
   rb: {fileID: 2461204399100186199}
   defaultPointHook: {fileID: 705667730717620727}
   pointToRaiCast: {fileID: 2775745855891584526}
-  forceToThrowObject: 10
+  forceToThrowObject: 3
   maxDistanseHook: 10
+  idleDistanseHook: 0.6
   timeThrowHook: 0.5
   timePullUpHook: 0.5
   timeCaiot: 0.1
@@ -5389,6 +5400,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &2713367591884938559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8276790386031036356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f7f95f7f3c10754d95490b908fdefca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hc: {fileID: 3216352190305387946}
+  mainCamera: {fileID: 0}
 --- !u!65 &8739015030634649303
 BoxCollider:
   m_ObjectHideFlags: 0

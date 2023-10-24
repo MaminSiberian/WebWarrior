@@ -1,9 +1,11 @@
 using UnityEngine;
 using DG.Tweening;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Enemies
 {
-    public class Chaser : EnemyBase, IDamagable, IGrabable
+    public class Chaser : EnemyBase, IDamagable, IGrabable, IDamager
     {
         protected float patrollingSpeed;
         protected float chasingSpeed;
@@ -11,19 +13,24 @@ namespace Enemies
         protected float chasingDistance;
         protected float attackingDistance;
 
+        public List<int> layersToDamage { get; protected set; }
+        private int defaultLayer = Layers.defaultLayer;
+        private int playerLayer = Layers.player;
+        private int enemyLayer = Layers.enemy;
+
         #region MONOBEHS
         private void Start()
         {
+            layersToDamage = new List<int>() { playerLayer };
             StartPatrolling();
         }
         private void FixedUpdate()
         {
-            /*if (state == State.Released && rb.velocity == Vector3.zero)
+            if (state == State.Released && DistanceToPlayer() >= chasingDistance * 2)
             {
-                Debug.Log("Here");
-                StartPatrolling();
+                StartIdle();
                 return;
-            }*/
+            }
 
             if (state == State.Attacking 
                 || state == State.Death
@@ -67,6 +74,7 @@ namespace Enemies
         #region CHANGING_STATES
         private void StartIdle()
         {
+            rb.velocity = Vector3.zero;
             state = State.Idle;
         }
         private void StartPatrolling()
@@ -108,6 +116,7 @@ namespace Enemies
 
         public void GetDamage()
         {
+            Debug.Log(name + " damaged");
             OnEnemyDeath();
         }
         protected override void OnEnemyDeath()
@@ -127,14 +136,20 @@ namespace Enemies
         #region GRAB
         public void OnGrab()
         {
-            Debug.Log("Grab");
+            layersToDamage = new List<int>() { defaultLayer };
             state = State.Grabbed;
         }
 
         public void OnRelease()
         {
-            Debug.Log("Release");
+            layersToDamage = new List<int>() { enemyLayer };
             state = State.Released;
+        }
+
+        public void OnDamage()
+        {
+            if (layersToDamage.Any(l => l == enemyLayer))
+                GetDamage();
         }
         #endregion
     }

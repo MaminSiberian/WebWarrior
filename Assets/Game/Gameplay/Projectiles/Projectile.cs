@@ -1,21 +1,29 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : PoolableObject, IGrabable
+public class Projectile : PoolableObject, IGrabable, IDamager
 {
     private Collider coll;
     private Rigidbody rb;
     private Collider sender;
-    private int wallsLayer = 6;
+    private int defaultLayer = Layers.defaultLayer;
+    private int wallsLayer = Layers.walls;
+    private int playerLayer = Layers.player;
+    private int enemyLayer = Layers.enemy;
+
+    public List<int> layersToDamage { get; protected set; }
 
     private void Awake()
     {
         coll = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
+        layersToDamage = new List<int>() { playerLayer };
     }
     private void OnDisable()
     {
         TurnOnCollision();
         rb.velocity = Vector3.zero;
+        layersToDamage = new List<int>() { playerLayer };
     }
     public void TurnOffCollision(Collider sender)
     {
@@ -36,23 +44,20 @@ public class Projectile : PoolableObject, IGrabable
             Deactivate();
             return;
         }
-
-        var obj = collision.gameObject.GetComponent<IDamagable>();
-
-        if (obj != null)
-        {
-            obj.GetDamage();
-            Deactivate();
-        }
     }
 
     public void OnGrab()
     {
-        
+        layersToDamage = new List<int>() { defaultLayer };
     }
 
     public void OnRelease()
     {
-        
+        layersToDamage = new List<int>() { enemyLayer };
+    }
+
+    public void OnDamage()
+    {
+        Deactivate();
     }
 }
