@@ -1,16 +1,22 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : PoolableObject, IGrabable
+public class Projectile : PoolableObject, IGrabable, IDamager
 {
     private Collider coll;
     private Rigidbody rb;
     private Collider sender;
-    private int wallsLayer = 6;
+    private int wallsLayer = Layers.walls;
+    private int playerLayer = Layers.player;
+    private int enemyLayer = Layers.enemy;
+
+    public List<int> layersToDamage { get; protected set; }
 
     private void Awake()
     {
         coll = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
+        layersToDamage.Add(playerLayer);
     }
     private void OnDisable()
     {
@@ -48,11 +54,11 @@ public class Projectile : PoolableObject, IGrabable
 
     public void OnGrab()
     {
-        
+        layersToDamage.Remove(playerLayer);
     }
 
     public void OnRelease()
     {
-        
+        layersToDamage.Add(enemyLayer);
     }
 }
