@@ -22,14 +22,18 @@ public class Magnit : MonoBehaviour
     [SerializeField] private AnimationCurve moveCurve;
     [Header(" speed movement  ")]
     [Range(0f, 3f)] [SerializeField] private float speedMove;
+    [SerializeField] private float referenceLength;
     [Header("Patrol point TRANSFORM")]
     [SerializeField] private List<Transform> patrolPoints;
     [Header("Need to desynchronize with others")]
 
     private float current;
+    [SerializeField] private float speedReference;
+
     private Vector3 startPos, endPos;
     private int iterator = 1;
     private int currentPatrolPos;
+    private float CurrentSpeed;
     [SerializeField] private Vector3 direction;
 
     // private Rigidbody rb;
@@ -40,13 +44,14 @@ public class Magnit : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody>();
         current = deltaTime;
-
+        speedReference = referenceLength / speedMove;
         if (patrolPoints.Count > 1)
         {
             startPos = transform.position;
             currentPatrolPos = inverseDirectrion ? patrolPoints.Count - 1 : 0;
             endPos = patrolPoints[currentPatrolPos].position;
             GetDirection();
+            GetCurrentSpeed();
         }
     }
 
@@ -61,7 +66,7 @@ public class Magnit : MonoBehaviour
 
     protected virtual void MoveEnemy()
     {
-        current += Time.fixedDeltaTime * speedMove;
+        current += Time.fixedDeltaTime * CurrentSpeed;
         transform.position = Vector3.Lerp(startPos, endPos, moveCurve.Evaluate(current));
     }
 
@@ -96,12 +101,23 @@ public class Magnit : MonoBehaviour
         startPos = patrolPoints[currentPatrolPos].position;
         currentPatrolPos += iterator;
         endPos = patrolPoints[currentPatrolPos].position;
+
         GetDirection();
+        GetCurrentSpeed();
+    }
+
+    private void GetCurrentSpeed()
+    {
+        
+        float length = Vector3.Distance(startPos, endPos);
+
+        CurrentSpeed = (length / speedMove) /speedReference;
     }
 
     private void GetDirection()
     {
         direction = (endPos - startPos).normalized;
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     private void OnTriggerEnter(Collider other)
