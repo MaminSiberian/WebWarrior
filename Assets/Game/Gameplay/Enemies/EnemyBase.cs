@@ -11,7 +11,7 @@ namespace Enemies
 
         protected float patrDelta = 0.1f;
         protected int currentPatrolPos = 0;
-        private int wallsLayer = 6;
+        private int wallsLayer = Layers.walls;
 
         public State state {  get; protected set; }
 

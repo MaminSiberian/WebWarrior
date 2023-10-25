@@ -46,26 +46,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showChaserParams: 0
   _chaserPatrollingSpeed: 1
-  _chaserChasingSpeed: 2
+  _chaserMinChasingSpeed: 2
+  _chaserMaxChasingSpeed: 4
   _chaserAttackingSpeed: 4
   _chaserChasingDistance: 6
   _chaserAttackingDistance: 2
-  showShooterParams: 1
+  showShooterParams: 0
   _shooterPatrollingSpeed: 2
   _shooterAttackingForce: 300
   _shooterAttackingDistance: 15
   _shooterReloadingTime: 4
   showCarrierParams: 0
   _carrierPatrollingSpeed: 2
-  _carrierChasingSpeed: 4
+  _carrierMinChasingSpeed: 1.5
+  _carrierMaxChasingSpeed: 3
   _carrierAttackingSpeed: 7
-  _carrierChasingDistance: 10
+  _carrierChasingDistance: 6
   _carrierAttackingDistance: 3
-  showMiniChaserParams: 0
-  _miniChaserChasingSpeed: 4
-  _miniChaserAttackingSpeed: 7
+  showMiniChaserParams: 1
+  _miniChaserMinChasingSpeed: 1.5
+  _miniChaserMaxChasingSpeed: 3.5
+  _miniChaserAttackingSpeed: 2
   _miniChaserChasingDistance: 30
-  _miniChaserAttackingDistance: 3
+  _miniChaserAttackingDistance: 1
   showTurretParams: 0
   _turretPatrollingSpeed: 2
   _turretAttackingForce: 450
