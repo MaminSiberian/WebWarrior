@@ -17,6 +17,7 @@ namespace HookControl
         {
             //Debug.Log("Enter RotationWithObjectBehavior state");
             // hc.currentMaxDistanceHook = hc.maxDistanseHook;
+            hc.rb.velocity = Vector3.zero;
         }
 
         public void Exit()

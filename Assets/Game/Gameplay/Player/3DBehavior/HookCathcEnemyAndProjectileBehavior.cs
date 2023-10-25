@@ -16,6 +16,7 @@ namespace HookControl
         public HookCathcEnemyAndProjectileBehavior(HookController hookController)
         {
             this.hc = hookController;
+
         }
 
         public void Enter()
@@ -32,6 +33,7 @@ namespace HookControl
             //endPos = hc.direction.normalized * hc.maxDistanseHook * normalazedPercentOfMaxDistance + (Vector2)hc.transform.position;
             hc.endPos = hc.capturedTarget.transform.position;
             hc.current = 0;
+            hc.rb.velocity = Vector3.zero;
         }
 
 

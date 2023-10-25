@@ -31,6 +31,7 @@ namespace HookControl
             hc.startPos = hc.defaultPointHook.position;
             hc.endPos = hc.direction.normalized * hc.maxDistanseHook * hc.normalazedPercentOfMaxDistance + hc.transform.position;
             hc.current = 0;
+            hc.rb.velocity = Vector3.zero;
         }
 
 

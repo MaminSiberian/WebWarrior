@@ -6,7 +6,11 @@ using UnityEngine;
 public class Magnit : MonoBehaviour
 {
     [Header("Force to throw Object")]
-    [Range(0f, 50f)] [SerializeField] private float forceToThrowObject;
+    [Range(0f, 100f)] [SerializeField] private float forceToPushObject;
+    [SerializeField] private AnimationCurve forceCurve;
+    [Header("Âuration of force action")]
+    [SerializeField] private float duration;
+    [SerializeField] bool StopMovingAfterFinished = true;
 
     [Header("if you need to synchronize, then set the same offset")]
     [Range(0f, 1f)] [SerializeField] private float deltaTime;
@@ -27,7 +31,8 @@ public class Magnit : MonoBehaviour
     private int iterator = 1;
     private int currentPatrolPos;
     [SerializeField] private Vector3 direction;
-   // private Rigidbody rb;
+
+    // private Rigidbody rb;
 
 
     // Start is called before the first frame update
@@ -41,6 +46,7 @@ public class Magnit : MonoBehaviour
             startPos = transform.position;
             currentPatrolPos = inverseDirectrion ? patrolPoints.Count - 1 : 0;
             endPos = patrolPoints[currentPatrolPos].position;
+            GetDirection();
         }
     }
 
@@ -90,6 +96,11 @@ public class Magnit : MonoBehaviour
         startPos = patrolPoints[currentPatrolPos].position;
         currentPatrolPos += iterator;
         endPos = patrolPoints[currentPatrolPos].position;
+        GetDirection();
+    }
+
+    private void GetDirection()
+    {
         direction = (endPos - startPos).normalized;
     }
 
@@ -100,12 +111,29 @@ public class Magnit : MonoBehaviour
         {
             var player = other.GetComponent<HookController>();
             player.SetBehaviorStan();
-            player.rb.AddForce(direction * forceToThrowObject, ForceMode.Impulse);
+            StartCoroutine(PushObject(direction, player.rb));
+            //player.rb.AddForce(direction * forceToPushObject, ForceMode.Impulse);
             //other.GetComponent<Rigidbody>().AddForce(direction * forceToThrowObject, ForceMode.Impulse);
         }
         if (other.CompareTag("Enemy"))
         {
 
         }
+    }
+
+    private IEnumerator PushObject(Vector3 direction, Rigidbody rb)
+    {
+        var startTime = Time.time;
+        while (Time.time < startTime + duration)
+        {
+            var t = (Time.time - startTime) / duration;
+            Debug.Log(t);
+            rb.velocity = direction * forceToPushObject * forceCurve.Evaluate(t);
+            yield return new WaitForFixedUpdate();
+        }
+
+        if (StopMovingAfterFinished)
+            rb.angularVelocity = rb.velocity = Vector3.zero;
+        StopCoroutine(PushObject(direction, rb));
     }
 }

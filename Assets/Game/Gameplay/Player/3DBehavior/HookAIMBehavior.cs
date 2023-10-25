@@ -25,6 +25,7 @@ namespace HookControl
             // shifts the angle to one side and subsequently we will add \|/
             angleDir = angleDir - halfCount * step;
             RaycastHit[] hit = new RaycastHit[hc.countRaiAIM];
+            hc.rb.velocity = Vector3.zero;
 
             //var dir = hc.direction;
             //  

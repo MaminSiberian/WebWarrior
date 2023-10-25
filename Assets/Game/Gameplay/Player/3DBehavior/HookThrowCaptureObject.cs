@@ -20,6 +20,7 @@ namespace HookControl
             EventSystem.SendHookThrowObject();
             hc.capturedTarget.GetComponent<Rigidbody>().AddForce(hc.direction * hc.forceToThrowObject, ForceMode.Impulse);
             hc.SetBehaviorRotation();
+            hc.rb.velocity = Vector3.zero;
         }
 
         public void Exit()
