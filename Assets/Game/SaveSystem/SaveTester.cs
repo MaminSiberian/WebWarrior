@@ -8,7 +8,7 @@ public class SaveTester : MonoBehaviour
 
     private void Awake()
     {
-        ShowInfo();
+        
     }
     [Button]
     private void ShowInfo()

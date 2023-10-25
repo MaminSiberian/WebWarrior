@@ -124,11 +124,10 @@ namespace Enemies
             state = State.Released;
         }
 
+        #endregion
         public void OnDamage()
         {
-            if (layersToDamage.Any(l => l == enemyLayer))
-                GetDamage();
+            GetDamage();
         }
-        #endregion
     }
 }
