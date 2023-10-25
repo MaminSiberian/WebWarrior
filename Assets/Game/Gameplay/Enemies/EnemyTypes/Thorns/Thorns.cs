@@ -41,7 +41,7 @@ public class Thorns : MonoBehaviour
                     transform.position.x,
                     transform.position.y,
                     i + offset);
-                //obj.transform.SetParent(transform);
+                obj.transform.SetParent(transform);
             }
         }
     }
