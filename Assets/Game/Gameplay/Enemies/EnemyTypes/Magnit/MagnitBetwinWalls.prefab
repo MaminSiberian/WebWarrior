@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 3558957649804562534}
   - component: {fileID: 1921328368592598941}
   - component: {fileID: 1455682007847791698}
-  - component: {fileID: 153717710689024503}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &153717710689024503
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363440218784612279}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3475031858869138185
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1003887837079406422}
   - component: {fileID: 4425672166724112124}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,8 +147,7 @@ GameObject:
   - component: {fileID: 6000790309118011652}
   - component: {fileID: 4218319569861699676}
   - component: {fileID: 9021955324770019322}
-  - component: {fileID: 2442399769103258702}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,27 +219,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2442399769103258702
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6110978099307048268}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6850106582864488526
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +233,7 @@ GameObject:
   - component: {fileID: 5706489152435576896}
   - component: {fileID: 8952990746551541122}
   - component: {fileID: 1656796056709555332}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MagnitBetwinWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +379,7 @@ MonoBehaviour:
   StopMovingAfterFinished: 1
   deltaTime: 0.186
   isPigPong: 1
-  inverseDirectrion: 0
+  inverseDirectrion: 1
   moveCurve:
     serializedVersion: 2
     m_Curve:
@@ -475,10 +431,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speedMove: 0.53
+  speedMove: 1
+  referenceLength: 10
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
+  speedReference: 0
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  CurrentSpeed: 0
   direction: {x: 0, y: 0, z: 0}
 --- !u!54 &1656796056709555332
 Rigidbody:
