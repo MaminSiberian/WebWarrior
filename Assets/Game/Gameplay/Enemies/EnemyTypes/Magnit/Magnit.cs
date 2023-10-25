@@ -124,7 +124,7 @@ public class Magnit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Throw " + other);
+        //Debug.Log("Throw " + other);
         if (other.GetComponent<HookController>() != null)
         {
             PushPlayer(other);
@@ -135,10 +135,8 @@ public class Magnit : MonoBehaviour
             var obj = other.GetComponent<IGrabable>();
             if (other.GetComponent<Rigidbody>() != null)
             {
-                Debug.Log(2);
                 var rb = other.GetComponent<Rigidbody>();
                 obj.OnGrab();
-                Debug.Log(3);
                 StartCoroutine (ReleaseObject(obj));
                 StartCoroutine (PushObject(direction, rb));
                 //rb.AddForce(direction * forceToPushObject, ForceMode.Impulse);
@@ -167,7 +165,6 @@ public class Magnit : MonoBehaviour
 
     private IEnumerator PushObject(Vector3 direction, Rigidbody rb)
     {
-        Debug.Log(4);
         var startTime = Time.time;
         while (Time.time < startTime + duration)
         {
