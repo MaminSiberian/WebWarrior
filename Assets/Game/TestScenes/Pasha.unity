@@ -197,10 +197,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1518594218625777795, guid: 7971666b9fe9c4f4c92846c68750f938, type: 3}
-      propertyPath: _miniChaserChasingSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2611393458998897832, guid: 7971666b9fe9c4f4c92846c68750f938, type: 3}
       propertyPath: m_Name
       value: EnemyManager
@@ -815,7 +811,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7419187110234638502, guid: 566aeea228d7573499f03f7332d55e9c, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7419187110234638502, guid: 566aeea228d7573499f03f7332d55e9c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -863,7 +859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9134620763892337829, guid: 566aeea228d7573499f03f7332d55e9c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -999,7 +995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9134620763892337829, guid: 566aeea228d7573499f03f7332d55e9c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1818,7 +1814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7162528613541871395, guid: e15245f6c5ccb4d4284acb9510999548, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7162528613541871395, guid: e15245f6c5ccb4d4284acb9510999548, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2738,7 +2734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1863103882
 Transform:
   m_ObjectHideFlags: 0
@@ -2756,7 +2752,7 @@ Transform:
   - {fileID: 1839435730}
   - {fileID: 1652173164}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1867625981
 PrefabInstance:

@@ -127,7 +127,7 @@ namespace Enemies
         protected override void SetData()
         {
             patrollingSpeed = data.chaserPatrollingSpeed;
-            chasingSpeed = data.chaserChasingSpeed;
+            chasingSpeed = Random.Range(data.chaserMinChasingSpeed, data.chaserMaxChasingSpeed);
             attackingSpeed = data.chaserAttackingSpeed;
             chasingDistance = data.chaserChasingDistance;
             attackingDistance = data.chaserAttackingDistance;
