@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelDirector : MonoBehaviour
 {
-    public static event Action OnLevelFinished;
-
     private void Awake()
     {
         Time.timeScale = 1.0f;
@@ -13,7 +11,7 @@ public class LevelDirector : MonoBehaviour
     public static void FinishLevel()
     {
         Debug.Log("save game: no method");
-        OnLevelFinished?.Invoke();
+        EventSystem.OnLevelFinished?.Invoke();
     }
     public static void RestartLevel()
     {

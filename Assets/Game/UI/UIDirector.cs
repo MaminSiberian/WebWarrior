@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using NaughtyAttributes;
+using YG;
 
 namespace UI
 {
@@ -11,14 +12,18 @@ namespace UI
         [SerializeField] private GameObject _pauseScreen;
         [SerializeField] private GameObject _gameOverScreen;
         [SerializeField] private GameObject _levelPassedScreen;
+        [SerializeField] private GameObject _watchAddToReviveButton;
+        [SerializeField] private GameObject _reviveButton;
 
         private static GameObject pauseButton;
         private static GameObject pauseScreen;
         private static GameObject gameOverScreen;
         private static GameObject levelPassedScreen;
+        private static GameObject watchAddToReviveButton;
+        private static GameObject reviveButton;
 
-        public static event Action OnGamePaused;
-        public static event Action OnGameUnpaused;
+        private static YandexGame yandexSDK;
+        private static int revivesCounter = 1;
         #endregion
 
         #region MONOBEHS
@@ -28,36 +33,68 @@ namespace UI
             pauseScreen = _pauseScreen;
             gameOverScreen = _gameOverScreen;
             levelPassedScreen = _levelPassedScreen;
+            watchAddToReviveButton = _watchAddToReviveButton;
+            reviveButton = _reviveButton;
         }
         private void OnEnable()
         {
-            TestPlayer.OnPlayerDeath += OnPlayerDeath;
-            LevelDirector.OnLevelFinished += OnLevelFinished;
+            EventSystem.OnPlayerDeath.AddListener(OnPlayerDeath);
+            EventSystem.OnLevelFinished.AddListener(OnLevelFinished);
+            EventSystem.OnPauseEnable.AddListener(PauseGame);
+            EventSystem.OnPauseDisable.AddListener(UnpauseGame);
+            EventSystem.OnPlayerRevive.AddListener(OnPlayerRevive);
         }
         private void OnDisable()
         {
-            TestPlayer.OnPlayerDeath -= OnPlayerDeath;
-            LevelDirector.OnLevelFinished -= OnLevelFinished;
+            EventSystem.OnPlayerDeath.RemoveListener(OnPlayerDeath);
+            EventSystem.OnLevelFinished.RemoveListener(OnLevelFinished);
+            EventSystem.OnPauseEnable.RemoveListener(PauseGame);
+            EventSystem.OnPauseDisable.RemoveListener(UnpauseGame);
+            EventSystem.OnPlayerRevive.RemoveListener(OnPlayerRevive);
+            yandexSDK.RewardVideoAd.RemoveListener(OnAddEnded);
+        }
+        private void Start()
+        {
+            revivesCounter = 1;
+            yandexSDK = FindAnyObjectByType<YandexGame>();
+            yandexSDK.RewardVideoAd.AddListener(OnAddEnded);
         }
         #endregion
 
-        public static void PauseGame()
+        #region PAUSE
+        private static void PauseGame()
         {
             Time.timeScale = 0f;
             TurnOffAll();
             pauseScreen.SetActive(true);
         }
-        public static void UnpauseGame()
+        private static void UnpauseGame()
         {
             TurnOffAll();
             pauseButton.SetActive(true);
             Time.timeScale = 1f;
         }
+        #endregion
+
+        public static void WatchAddToRevive()
+        {
+            yandexSDK._RewardedShow(1);
+        }
+        public void OnAddEnded()
+        {
+            Debug.Log(revivesCounter);
+            reviveButton.SetActive(true);
+        }
+
         [Button]
         private void OnPlayerDeath()
         {
             TurnOffAll();
             gameOverScreen.SetActive(true);
+            reviveButton.SetActive(false);
+
+            if (revivesCounter > 0)
+                watchAddToReviveButton.SetActive(true);
         }
         [Button]
         private void OnLevelFinished()
@@ -71,6 +108,12 @@ namespace UI
             pauseScreen.SetActive(false);
             gameOverScreen.SetActive(false);
             levelPassedScreen.SetActive(false);
+        }
+        private void OnPlayerRevive()
+        {
+            TurnOffAll();
+            pauseButton.SetActive(true);
+            revivesCounter--;
         }
     }
 }

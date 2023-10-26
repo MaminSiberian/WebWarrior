@@ -5,7 +5,7 @@ namespace UI
     {
         protected override void OnButtonClick()
         {
-            UIDirector.PauseGame();
+            EventSystem.SendPauseEnable();
         }
     }
 }
