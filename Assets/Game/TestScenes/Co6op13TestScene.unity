@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1045,6 +1045,10 @@ PrefabInstance:
     - target: {fileID: 6608830302049048135, guid: ddf935ca417696f4c9028c08218208df, type: 3}
       propertyPath: m_Name
       value: TestChaser (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608830302049048135, guid: ddf935ca417696f4c9028c08218208df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4669,6 +4673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestChaser (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6608830302049048135, guid: ddf935ca417696f4c9028c08218208df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7044950614512893536, guid: ddf935ca417696f4c9028c08218208df, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -4883,6 +4891,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestChaser (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6608830302049048135, guid: ddf935ca417696f4c9028c08218208df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5004,6 +5016,10 @@ PrefabInstance:
     - target: {fileID: 6608830302049048135, guid: ddf935ca417696f4c9028c08218208df, type: 3}
       propertyPath: m_Name
       value: TestChaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608830302049048135, guid: ddf935ca417696f4c9028c08218208df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5848,6 +5864,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagnitPatrol
       objectReference: {fileID: 0}
+    - target: {fileID: 8819289202417567315, guid: 3ae1b9c665345bd41a2843f31d3b2091, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5995,8 +6015,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 136
+  orthographic: 0
   orthographic size: 23.34
   m_Depth: -1
   m_CullingMask:
@@ -6672,7 +6692,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1573329759}
-  - component: {fileID: 1573329760}
   m_Layer: 0
   m_Name: Enemys
   m_TagString: Untagged
@@ -6692,35 +6711,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 589116056}
   - {fileID: 1305086549}
+  - {fileID: 589116056}
   - {fileID: 305076133}
   - {fileID: 121471006}
   - {fileID: 1383368200}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1573329760
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573329758}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1574832180
 GameObject:
   m_ObjectHideFlags: 0
@@ -7380,6 +7378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thorns (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4676536404142248954, guid: be4d2dd5309053c47b82b2a7f3e42d98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7757825233203786082, guid: be4d2dd5309053c47b82b2a7f3e42d98, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -7744,7 +7746,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1913497212
 Transform:
   m_ObjectHideFlags: 0
@@ -8975,6 +8977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magnit
       objectReference: {fileID: 0}
+    - target: {fileID: 6850106582864488526, guid: b9d46077ebc84964491eb3538eeadcdb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8952990746551541122, guid: b9d46077ebc84964491eb3538eeadcdb, type: 3}
       propertyPath: patrolPoints.Array.data[0]
       value: 
@@ -9104,6 +9110,10 @@ PrefabInstance:
     - target: {fileID: 4676536404142248954, guid: be4d2dd5309053c47b82b2a7f3e42d98, type: 3}
       propertyPath: m_Name
       value: Thorns (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676536404142248954, guid: be4d2dd5309053c47b82b2a7f3e42d98, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7757825233203786082, guid: be4d2dd5309053c47b82b2a7f3e42d98, type: 3}
       propertyPath: m_RootOrder

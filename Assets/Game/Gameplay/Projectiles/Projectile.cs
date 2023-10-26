@@ -48,6 +48,7 @@ public class Projectile : PoolableObject, IGrabable, IDamager
 
     public void OnGrab()
     {
+        rb.velocity = Vector3.zero;
         layersToDamage = new List<int>() { defaultLayer };
     }
 
