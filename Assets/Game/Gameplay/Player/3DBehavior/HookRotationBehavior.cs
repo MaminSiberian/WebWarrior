@@ -32,8 +32,10 @@ namespace HookControl
 
         private void Rotation()
         {
-            hc.transform.rotation = Quaternion.LookRotation(hc.direction);
-
+            if (hc.direction != Vector3.zero)
+            {
+                hc.transform.rotation = Quaternion.LookRotation(hc.direction);
+            }
             if ((hc.isActiveHook) && (hc.isEndHook))
             {
                 hc.isActiveHook = false;

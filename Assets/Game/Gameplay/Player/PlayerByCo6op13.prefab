@@ -4275,9 +4275,9 @@ MonoBehaviour:
   timeThrowHook: 0.5
   timePullUpHook: 0.5
   timeCaiot: 0.1
-  timeStun: 0.5
-  triggerAngleAIM: 15
-  countRaiAIM: 10
+  timeStun: 2
+  triggerAngleAIM: 5
+  countRaiAIM: 5
   layerToTouchAIM:
     serializedVersion: 2
     m_Bits: 1472
@@ -4306,7 +4306,7 @@ Rigidbody:
   m_GameObject: {fileID: 8276790386031036356}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 1
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

@@ -23,7 +23,7 @@ namespace HookControl
             // converts a direction vector to a direction angle
             var angleDir = AccessoryMetods.GetAngleFromVectorXZ(hc.direction);
             // shifts the angle to one side and subsequently we will add \|/
-            angleDir = angleDir - halfCount * step;
+            //angleDir = angleDir - halfCount * step;
             RaycastHit[] hit = new RaycastHit[hc.countRaiAIM];
             hc.rb.velocity = Vector3.zero;
 
@@ -83,19 +83,30 @@ namespace HookControl
 
         private RaycastHit[] RaiCast(RaycastHit[] hit, float angleDir, float step)
         {
-            Vector3 dir = AccessoryMetods.GetVectorFromAngleXZ(angleDir);
-            //Debug.Log(dir);
 
-            for (int i = 0; i < hc.countRaiAIM; i++)
+            Vector3 dir = AccessoryMetods.GetVectorFromAngleXZ(angleDir);
+            int i = 0;
+            var c = Color.white;
+            while (i < hc.countRaiAIM)
             {
-                Debug.DrawRay(hc.pointToRaiCast.position, dir * hc.maxDistanseHook, Color.red, 1);
+                Debug.DrawRay(hc.pointToRaiCast.position, dir * hc.maxDistanseHook, c, 1);
                 Physics.Raycast(
                     hc.pointToRaiCast.position,
                     dir,
                     out hit[i],
                     hc.maxDistanseHook,
                     hc.layerToTouchAIM);
-                dir = AccessoryMetods.GetVectorFromAngleXZ(angleDir + step * (i + 1));
+                i++;
+                if (i % 2 == 0)
+                {
+                    c = Color.black;
+                    dir = AccessoryMetods.GetVectorFromAngleXZ(angleDir + step * (i - 1));
+                }
+                else
+                {
+                    c = Color.red;
+                    dir = AccessoryMetods.GetVectorFromAngleXZ(angleDir + step * (-i));
+                }
             }
             return hit;
         }

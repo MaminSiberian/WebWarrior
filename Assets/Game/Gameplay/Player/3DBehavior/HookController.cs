@@ -175,15 +175,15 @@ namespace HookControl
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(transform.position, direction.normalized * maxDistanseHook / 2);
+            Gizmos.DrawRay(transform.position, direction.normalized * maxDistanseHook);
             Gizmos.color = Color.green;
 
             angleDirection = AccessoryMetods.GetAngleFromVectorXZ(direction);
 
             Vector3 maxAngle = AccessoryMetods.GetVectorFromAngleXZ(angleDirection + triggerAngleAIM);
             Vector3 minAngle = AccessoryMetods.GetVectorFromAngleXZ(angleDirection - triggerAngleAIM);
-            Gizmos.DrawRay(pointToRaiCast.position, maxAngle * maxDistanseHook / 2);
-            Gizmos.DrawRay(pointToRaiCast.position, minAngle * maxDistanseHook / 2);
+            Gizmos.DrawRay(pointToRaiCast.position, maxAngle * maxDistanseHook);
+            Gizmos.DrawRay(pointToRaiCast.position, minAngle * maxDistanseHook);
         }
         private void SetData()
         {
