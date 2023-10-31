@@ -5095,6 +5095,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 384197625394047308, guid: 48a42203a7c855e419f052d27646b422, type: 3}
+      propertyPath: advTimer
+      value: 
+      objectReference: {fileID: 9172691836310139904, guid: 6548aff6ec7c9164db0651ce42c3ad7a, type: 3}
     - target: {fileID: 702811962605111672, guid: 48a42203a7c855e419f052d27646b422, type: 3}
       propertyPath: m_Name
       value: Level Interface

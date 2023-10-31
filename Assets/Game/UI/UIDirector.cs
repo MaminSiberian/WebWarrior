@@ -8,19 +8,13 @@ namespace UI
     public class UIDirector : MonoBehaviour
     {
         #region FIELDS
-        [SerializeField] private GameObject _pauseButton;
-        [SerializeField] private GameObject _pauseScreen;
-        [SerializeField] private GameObject _gameOverScreen;
-        [SerializeField] private GameObject _levelPassedScreen;
-        [SerializeField] private GameObject _watchAddToReviveButton;
-        [SerializeField] private GameObject _reviveButton;
-
-        private static GameObject pauseButton;
-        private static GameObject pauseScreen;
-        private static GameObject gameOverScreen;
-        private static GameObject levelPassedScreen;
-        private static GameObject watchAddToReviveButton;
-        private static GameObject reviveButton;
+        [SerializeField] private GameObject pauseButton;
+        [SerializeField] private GameObject pauseScreen;
+        [SerializeField] private GameObject gameOverScreen;
+        [SerializeField] private GameObject levelPassedScreen;
+        [SerializeField] private GameObject watchAddToReviveButton;
+        [SerializeField] private GameObject reviveButton;
+        //[SerializeField] private AdvCooldownTimer advTimer;
 
         private static YandexGame yandexSDK;
         private static int revivesCounter = 1;
@@ -29,12 +23,7 @@ namespace UI
         #region MONOBEHS
         private void Awake()
         {
-            pauseButton = _pauseButton;
-            pauseScreen = _pauseScreen;
-            gameOverScreen = _gameOverScreen;
-            levelPassedScreen = _levelPassedScreen;
-            watchAddToReviveButton = _watchAddToReviveButton;
-            reviveButton = _reviveButton;
+            //advTimer = Instantiate(advTimer);
         }
         private void OnEnable()
         {
@@ -58,17 +47,18 @@ namespace UI
             revivesCounter = 1;
             yandexSDK = FindAnyObjectByType<YandexGame>();
             yandexSDK.RewardVideoAd.AddListener(OnAddEnded);
+            yandexSDK.infoYG.AdWhenLoadingScene = false;
         }
         #endregion
 
         #region PAUSE
-        private static void PauseGame()
+        private void PauseGame()
         {
             Time.timeScale = 0f;
             TurnOffAll();
             pauseScreen.SetActive(true);
         }
-        private static void UnpauseGame()
+        private void UnpauseGame()
         {
             TurnOffAll();
             pauseButton.SetActive(true);
@@ -78,12 +68,13 @@ namespace UI
 
         public static void WatchAddToRevive()
         {
-            yandexSDK._RewardedShow(1);
+            yandexSDK._RewardedShow(0);
         }
         public void OnAddEnded()
         {
             Debug.Log(revivesCounter);
             reviveButton.SetActive(true);
+            //advTimer.StartTimer();
         }
 
         [Button]
@@ -93,7 +84,7 @@ namespace UI
             gameOverScreen.SetActive(true);
             reviveButton.SetActive(false);
 
-            if (revivesCounter > 0)
+            if (revivesCounter > 0 /*&& advTimer.addIsReady*/)
                 watchAddToReviveButton.SetActive(true);
         }
         [Button]
@@ -102,7 +93,7 @@ namespace UI
             TurnOffAll();
             levelPassedScreen.SetActive(true);
         }
-        private static void TurnOffAll()
+        private void TurnOffAll()
         {
             pauseButton.SetActive(false);
             pauseScreen.SetActive(false);

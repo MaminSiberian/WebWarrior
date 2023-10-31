@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TestPlayer : MonoBehaviour, IDamagable
 {
-    public static event Action OnPlayerDeath;
+    //public static event Action OnPlayerDeath;
 
     public void GetDamage()
     {

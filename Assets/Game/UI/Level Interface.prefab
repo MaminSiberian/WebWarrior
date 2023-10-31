@@ -1947,12 +1947,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38baa1bf5d4051c42b1d64eda751892b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseButton: {fileID: 2506520941898706124}
-  _pauseScreen: {fileID: 5458881252739096214}
-  _gameOverScreen: {fileID: 1395058425367007966}
-  _levelPassedScreen: {fileID: 225817800101458526}
-  _watchAddToReviveButton: {fileID: 5606200255374299497}
-  _reviveButton: {fileID: 1775664701641277907}
+  pauseButton: {fileID: 2506520941898706124}
+  pauseScreen: {fileID: 5458881252739096214}
+  gameOverScreen: {fileID: 1395058425367007966}
+  levelPassedScreen: {fileID: 225817800101458526}
+  watchAddToReviveButton: {fileID: 5606200255374299497}
+  reviveButton: {fileID: 1775664701641277907}
 --- !u!1 &2948200046980014129
 GameObject:
   m_ObjectHideFlags: 0
