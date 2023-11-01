@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 using NaughtyAttributes;
-using YG;
 
 namespace UI
 {
+    [RequireComponent(typeof(AdvManager))]
     public class UIDirector : MonoBehaviour
     {
         #region FIELDS
@@ -14,17 +13,11 @@ namespace UI
         [SerializeField] private GameObject levelPassedScreen;
         [SerializeField] private GameObject watchAddToReviveButton;
         [SerializeField] private GameObject reviveButton;
-        //[SerializeField] private AdvCooldownTimer advTimer;
 
-        private static YandexGame yandexSDK;
-        private static int revivesCounter = 1;
         #endregion
 
         #region MONOBEHS
-        private void Awake()
-        {
-            //advTimer = Instantiate(advTimer);
-        }
+
         private void OnEnable()
         {
             EventSystem.OnPlayerDeath.AddListener(OnPlayerDeath);
@@ -40,14 +33,6 @@ namespace UI
             EventSystem.OnPauseEnable.RemoveListener(PauseGame);
             EventSystem.OnPauseDisable.RemoveListener(UnpauseGame);
             EventSystem.OnPlayerRevive.RemoveListener(OnPlayerRevive);
-            yandexSDK.RewardVideoAd.RemoveListener(OnAddEnded);
-        }
-        private void Start()
-        {
-            revivesCounter = 1;
-            yandexSDK = FindAnyObjectByType<YandexGame>();
-            yandexSDK.RewardVideoAd.AddListener(OnAddEnded);
-            yandexSDK.infoYG.AdWhenLoadingScene = false;
         }
         #endregion
 
@@ -66,15 +51,13 @@ namespace UI
         }
         #endregion
 
-        public static void WatchAddToRevive()
+        public void ShowReviveButton()
         {
-            yandexSDK._RewardedShow(0);
-        }
-        public void OnAddEnded()
-        {
-            Debug.Log(revivesCounter);
             reviveButton.SetActive(true);
-            //advTimer.StartTimer();
+        }
+        public void ShowAddButton()
+        {
+            watchAddToReviveButton.SetActive(true);
         }
 
         [Button]
@@ -83,9 +66,6 @@ namespace UI
             TurnOffAll();
             gameOverScreen.SetActive(true);
             reviveButton.SetActive(false);
-
-            if (revivesCounter > 0 /*&& advTimer.addIsReady*/)
-                watchAddToReviveButton.SetActive(true);
         }
         [Button]
         private void OnLevelFinished()
@@ -104,7 +84,6 @@ namespace UI
         {
             TurnOffAll();
             pauseButton.SetActive(true);
-            revivesCounter--;
         }
     }
 }

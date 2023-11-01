@@ -6,7 +6,7 @@ namespace UI
     {
         protected override void OnButtonClick()
         {
-            UIDirector.WatchAddToRevive();
+            AdvManager.WatchAddToRevive();
             gameObject.SetActive(false);
         }
     }
