@@ -1,15 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public static class SaveManager
+public abstract class SaveManager
 {
-    private const string DATA_KEY = "Data.json";
-
-    public static void SetLevelsData(List<LevelData> levels)
-    {
-        SaveSystem.SaveToFile(levels, DATA_KEY);
-    }
-    public static void SaveLevelPassed(int levelNumber, bool isPassed = true)
+    public void SaveLevelPassed(int levelNumber, bool isPassed = true)
     {
         List<LevelData> levels = LoadAllLevelData();        
 
@@ -31,11 +25,7 @@ public static class SaveManager
 
         SetLevelsData(levels);
     }
-    public static List<LevelData> LoadAllLevelData()
-    {
-        return SaveSystem.LoadFromFile<List<LevelData>>(DATA_KEY);
-    }
-    public static bool LevelIsPassed(int levelNumber)
+    public LevelData LoadLevelData(int levelNumber)
     {
         List<LevelData> levels = LoadAllLevelData();
 
@@ -44,13 +34,18 @@ public static class SaveManager
         if (!levels.Any(l => l.levelNumber == levelNumber))
         {
             SaveLevelPassed(levelNumber, false);
-            return false;
         }
-
         var level = levels.FirstOrDefault(l => l.levelNumber == levelNumber);
-        return level.isPassed;
+        return level;
     }
-    public static void ResetData()
+    public bool LevelIsPassed(int levelNumber)
+    {
+        return LoadLevelData(levelNumber).isPassed;
+    }
+
+    public abstract void SetLevelsData(List<LevelData> levels); //protected
+    public abstract List<LevelData> LoadAllLevelData(); //protected
+    public void ResetData() // delete
     {
         SetLevelsData(null);
     }

@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f17437d30ac0b418c214e5914fdcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveSystem: 1
   levelNumber: 0
 --- !u!4 &388962499
 Transform:

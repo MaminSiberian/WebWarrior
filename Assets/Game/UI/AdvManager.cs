@@ -38,7 +38,6 @@ public class AdvManager : MonoBehaviour
     }
     public void OnAddEnded(int id)
     {
-        Debug.Log(revivesCounter);
         director.ShowReviveButton();
     }
     private void OnPlayerDeath()

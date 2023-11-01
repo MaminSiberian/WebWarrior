@@ -1,9 +1,8 @@
 using System.IO;
-using System;
 using UnityEngine;
 using Newtonsoft.Json;
 
-public class SaveSystem
+public class JsonSaveSystem
 {
     public static void SaveToFile(object data, string key)
     {
