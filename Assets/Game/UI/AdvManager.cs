@@ -5,7 +5,6 @@ using YG;
 [RequireComponent(typeof(UIDirector))]
 public class AdvManager : MonoBehaviour
 {
-    private static YandexGame yandexSDK;
     private int revivesCounter = 1;
     private UIDirector director;
 
@@ -28,8 +27,6 @@ public class AdvManager : MonoBehaviour
     private void Start()
     {
         revivesCounter = 1;
-        yandexSDK = FindAnyObjectByType<YandexGame>();
-        yandexSDK.infoYG.AdWhenLoadingScene = false;
     }
 
     public static void WatchAddToRevive()
