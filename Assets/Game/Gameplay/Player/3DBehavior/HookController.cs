@@ -65,8 +65,19 @@ namespace HookControl
             this.InitBehaviors();
             this.SetBehaviorDefault();
             data = FindObjectOfType<PlayerData>();
+        }
+
+        #region Events
+        private void OnEnable()
+        {
             EventSystem.OnDataPlayerChanged.AddListener(SetData);
         }
+
+        private void OnDisable()
+        {
+            EventSystem.OnDataPlayerChanged.RemoveListener(SetData);
+        }
+        #endregion
 
         private void InitBehaviors()
         {
@@ -97,8 +108,6 @@ namespace HookControl
             this.behaviorCurrent.Enter();
         }
 
-
-
         private IHookBehavior GetBehavior<T>() where T : IHookBehavior
         {
             var type = typeof(T);
@@ -119,6 +128,7 @@ namespace HookControl
             }
         }
 
+        #region SetBehaviors
         public void SetBehaviorRotation()
         {
             var behavior = this.GetBehavior<HookRotationBehavior>();
@@ -166,25 +176,13 @@ namespace HookControl
             var behavior = this.GetBehavior<HookCatcEmptyhBehavior>();
             this.SetBehavior(behavior);
         }
+        #endregion
 
         private void ResetIsActiveHook()
         {
             isActiveHook = false;
         }
 
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(transform.position, direction.normalized * maxDistanseHook);
-            Gizmos.color = Color.green;
-
-            angleDirection = AccessoryMetods.GetAngleFromVectorXZ(direction);
-
-            Vector3 maxAngle = AccessoryMetods.GetVectorFromAngleXZ(angleDirection + triggerAngleAIM);
-            Vector3 minAngle = AccessoryMetods.GetVectorFromAngleXZ(angleDirection - triggerAngleAIM);
-            Gizmos.DrawRay(pointToRaiCast.position, maxAngle * maxDistanseHook);
-            Gizmos.DrawRay(pointToRaiCast.position, minAngle * maxDistanseHook);
-        }
         private void SetData()
         {
             this.forceToThrowObject = data.forceToThrowObject;
@@ -199,5 +197,21 @@ namespace HookControl
             this.layerWall = data.layerWall;
             this.layerEnemyAndProjectile = data.layerEnemyAndProjectile;
         }
+
+        #region Gizmos
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawRay(transform.position, direction.normalized * maxDistanseHook);
+            Gizmos.color = Color.green;
+
+            angleDirection = AccessoryMetods.GetAngleFromVectorXZ(direction);
+
+            Vector3 maxAngle = AccessoryMetods.GetVectorFromAngleXZ(angleDirection + triggerAngleAIM);
+            Vector3 minAngle = AccessoryMetods.GetVectorFromAngleXZ(angleDirection - triggerAngleAIM);
+            Gizmos.DrawRay(pointToRaiCast.position, maxAngle * maxDistanseHook);
+            Gizmos.DrawRay(pointToRaiCast.position, minAngle * maxDistanseHook);
+        }
+        #endregion
     }
 }

@@ -13,8 +13,26 @@ public class WebRenderer : MonoBehaviour
     void Start()
     {
         lr.positionCount = 2;
+    }
+
+    private void OnEnable()
+    {
         EventSystem.OnThrowHook.AddListener(SetPosition);
-        
+        EventSystem.OnHookStan.AddListener(StopWebRenderer);
+    }
+    private void OnDisable()
+    {
+        EventSystem.OnThrowHook.RemoveListener(SetPosition);
+        EventSystem.OnHookStan.RemoveListener(StopWebRenderer);
+    }
+
+
+    private void StopWebRenderer()
+    {
+        Debug.Log("stopWeb");
+        lr.enabled = false;
+        targetPoint.gameObject.SetActive(false);
+        StopCoroutine(Web());
     }
 
     private void SetPosition()
@@ -24,6 +42,7 @@ public class WebRenderer : MonoBehaviour
 
     private IEnumerator Web()
     {
+        lr.enabled = true;
         targetPoint.gameObject.SetActive(true);
         var currentTime = maxTime;
         while (currentTime > 0)
@@ -35,6 +54,7 @@ public class WebRenderer : MonoBehaviour
 
         }
         targetPoint.gameObject.SetActive(false);
+        lr.enabled = false;
         StopCoroutine("Web");
 
     }
