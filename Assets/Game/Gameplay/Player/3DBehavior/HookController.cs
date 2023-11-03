@@ -38,6 +38,9 @@ namespace HookControl
         [SerializeField] internal LayerMask layerWall;
         [SerializeField] internal LayerMask layerEnemyAndProjectile;
         [SerializeField] internal LayerMask layerGround;
+        [Space]
+        [SerializeField] internal Camera mainCamera;
+        private Ray ray;
 
 
         private Dictionary<Type, IHookBehavior> behavioraMap;
@@ -65,19 +68,49 @@ namespace HookControl
             this.InitBehaviors();
             this.SetBehaviorDefault();
             data = FindObjectOfType<PlayerData>();
+            mainCamera = Camera.main;
         }
 
         #region Events
         private void OnEnable()
         {
+            Start();
+            //inputManager = FindObjectOfType<GamePlayInputManager>();
             EventSystem.OnDataPlayerChanged.AddListener(SetData);
+            GamePlayInputManager.MousePosition += GetDirection;
+            GamePlayInputManager.MouseClick += ActiveHook;
         }
 
         private void OnDisable()
         {
+            //inputManager = FindObjectOfType<GamePlayInputManager>();
+            EventSystem.OnDataPlayerChanged.AddListener(SetData);
+            GamePlayInputManager.MousePosition -= GetDirection;
+            GamePlayInputManager.MouseClick -= ActiveHook;
             EventSystem.OnDataPlayerChanged.RemoveListener(SetData);
         }
+
         #endregion
+
+        private void ActiveHook()
+        {
+            isActiveHook = true;
+        }
+
+        private void GetDirection(Vector2 mousePos)
+        {
+            Debug.Log(mousePos);
+            ray = mainCamera.ScreenPointToRay(mousePos);
+
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerGround))
+            {
+                direction = new Vector3(
+                        raycastHit.point.x - transform.position.x,
+                        transform.position.y,
+                        raycastHit.point.z - transform.position.z);
+            }
+        }
+
 
         private void InitBehaviors()
         {
@@ -91,6 +124,7 @@ namespace HookControl
             this.behavioraMap[typeof(HookThrowCaptureObject)] = new HookThrowCaptureObject(this);
             this.behavioraMap[typeof(HookStunBehavior)] = new HookStunBehavior(this);
         }
+
         private void SetBehaviorDefault()
         {
             SetBehaviorRotation();
