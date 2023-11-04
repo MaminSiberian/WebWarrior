@@ -99,7 +99,6 @@ namespace HookControl
 
         private void GetDirection(Vector2 mousePos)
         {
-            Debug.Log(mousePos);
             ray = mainCamera.ScreenPointToRay(mousePos);
 
             if (Physics.Raycast(ray, out RaycastHit raycastHit, float.MaxValue, layerGround))

@@ -17,9 +17,10 @@ public class TiledObjectOnScaleSize : MonoBehaviour
         foreach (Transform child in transform) children.Add(child.gameObject);
         children.ForEach(child => DestroyImmediate(child));
 
-        if (transform.localScale.z >= 1)
+        if (transform.localScale.z > 1)
         {
             count = (int)transform.localScale.z;
+            Debug.Log("z  " + count);
             float half = (float)count;
             if (half % 2 == 0)
             {
@@ -38,6 +39,31 @@ public class TiledObjectOnScaleSize : MonoBehaviour
                     transform.position.x,
                     transform.position.y,
                     i + offset);
+                obj.transform.SetParent(transform);
+            }
+        }
+        else if (transform.localScale.x >= 1)
+        {
+            count = (int)transform.localScale.x;
+            Debug.Log("x  " + count);
+            float half = (float)count;
+            if (half % 2 == 0)
+            {
+                offset = count / 2 - 0.5f;
+            }
+            else
+            {
+                offset = count / 2;
+            }
+            offset = transform.position.x - offset;
+            for (int i = 0; i < count; i++)
+            {
+                var rand = Random.Range(0, prefabGFX.Count);
+                var obj = Instantiate(prefabGFX[rand], transform.position, transform.rotation);
+                obj.transform.position = new Vector3(
+                     i + offset,
+                    transform.position.y,
+                   transform.position.z);
                 obj.transform.SetParent(transform);
             }
         }

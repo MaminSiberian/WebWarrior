@@ -10,7 +10,7 @@ public class Magnit : MonoBehaviour
     [Header("Patrol point TRANSFORM")]
     [SerializeField] private List<Transform> patrolPoints;
     [Header("Force to throw Object")]
-    [Range(0f, 100f)][SerializeField] private float forceToPushObject;
+    [Range(0f, 100f)] [SerializeField] private float forceToPushObject;
     [SerializeField] private float timeStunEnemy;
     [SerializeField] private AnimationCurve forceCurve;
     [Header("Duration of force action")]
@@ -18,7 +18,8 @@ public class Magnit : MonoBehaviour
     [SerializeField] bool StopMovingAfterFinished = true;
     [Header("Need to desynchronize with others")]
     [Header("if you need to synchronize, then set the same offset")]
-    [Range(0f, 1f)][SerializeField] private float deltaTime;
+    [Range(0f, 1f)] [SerializeField] private float deltaTime;
+    [SerializeField] private float delayNextMove;
     [Header("Loop or PingPong ")]
     [SerializeField] private bool isPigPong;
     [Header("Changes the initial direction  ")]
@@ -26,7 +27,7 @@ public class Magnit : MonoBehaviour
     [Header("Behavior  ")]
     [SerializeField] private AnimationCurve moveCurve;
     [Header(" speed movement  ")]
-    [Range(0f, 3f)][SerializeField] private float speedMove;
+    [Range(0f, 3f)] [SerializeField] private float speedMove;
     [SerializeField] private float referenceLength;
 
     private float current;
@@ -36,9 +37,11 @@ public class Magnit : MonoBehaviour
     private float length;
     private float coefficient;
     private Vector3 direction;
+    private float currentDelayNextMove;
 
     void Start()
     {
+        currentDelayNextMove = delayNextMove;
         if (!isPigPong)
         {
             inverseDirectrion = false;
@@ -71,8 +74,16 @@ public class Magnit : MonoBehaviour
 
     protected void CheckPatrollingPoints()
     {
-        if (current > 1)
-            SwitchPatrollingPoint();
+        if (current < 1)
+            return;
+
+        currentDelayNextMove -= Time.fixedDeltaTime;
+        if (currentDelayNextMove > 0)
+            return;
+
+        currentDelayNextMove = delayNextMove;
+        SwitchPatrollingPoint();
+
     }
     protected void SwitchPatrollingPoint()
     {
@@ -137,8 +148,8 @@ public class Magnit : MonoBehaviour
             {
                 var rb = other.GetComponent<Rigidbody>();
                 obj.OnGrab();
-                StartCoroutine (ReleaseObject(obj));
-                StartCoroutine (PushObject(direction, rb));
+                StartCoroutine(ReleaseObject(obj));
+                StartCoroutine(PushObject(direction, rb));
                 //rb.AddForce(direction * forceToPushObject, ForceMode.Impulse);
 
                 //PushObject(direction, rb);
