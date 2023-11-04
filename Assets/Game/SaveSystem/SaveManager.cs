@@ -1,52 +1,62 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using UnityEngine;
+using YG;
 
-public abstract class SaveManager
+public class SaveManager : MonoBehaviour
 {
-    public void SaveLevelPassed(int levelNumber, bool isPassed = true)
+    [SerializeField] private SaveSystem saveSystem;
+
+    public List<int> passelLevels { get; private set; }
+    public static event Action<List<int>> OnLevelsDataChangedEvent;
+    private SaveLoader saveManager;
+
+    private void Awake()
     {
-        List<LevelData> levels = LoadAllLevelData();        
+        passelLevels = new List<int>();
 
-        if (levels == null)
+        switch (saveSystem)
         {
-            levels = new List<LevelData>();
+            case SaveSystem.Json:
+                saveManager = new JsonSaveLoader();
+                break;
+            case SaveSystem.YG:
+                saveManager = new YGSaveLoader();
+                break;
+            default:
+                break;
         }
-
-        if (levels.Any(l => l.levelNumber == levelNumber))
-        {
-            int index = levels.IndexOf(levels.FirstOrDefault(l => l.levelNumber == levelNumber));
-            levels[index] = new LevelData() { levelNumber = levelNumber, isPassed = isPassed };
-        }
-        else
-        {
-            LevelData newLevel = new LevelData() { levelNumber = levelNumber, isPassed = isPassed };
-            levels.Add(newLevel);
-        }
-
-        SetLevelsData(levels);
     }
-    public LevelData LoadLevelData(int levelNumber)
+    private void OnEnable()
     {
-        List<LevelData> levels = LoadAllLevelData();
-
-        if (levels == null) levels = new List<LevelData>();
-
-        if (!levels.Any(l => l.levelNumber == levelNumber))
+        if (saveSystem == SaveSystem.YG) YandexGame.GetDataEvent += LoadLevelsData;
+    }
+    private void OnDisable()
+    {
+        if (saveSystem == SaveSystem.YG) YandexGame.GetDataEvent -= LoadLevelsData;
+    }
+    private void Start()
+    {
+        if (YandexGame.SDKEnabled)
         {
-            SaveLevelPassed(levelNumber, false);
+            LoadLevelsData();
         }
-        var level = levels.FirstOrDefault(l => l.levelNumber == levelNumber);
-        return level;
     }
-    public bool LevelIsPassed(int levelNumber)
+    public void LoadLevelsData()
     {
-        return LoadLevelData(levelNumber).isPassed;
+        List<LevelData> levels = saveManager.LoadAllLevelData();
+        foreach (var level in levels)
+        {
+            if (level.isPassed)
+            {
+                passelLevels.Add(level.levelNumber);
+            }
+        }
+        passelLevels.ForEach(l => Debug.Log(l));
+        OnLevelsDataChangedEvent?.Invoke(passelLevels);
     }
-
-    public abstract void SetLevelsData(List<LevelData> levels); //protected
-    public abstract List<LevelData> LoadAllLevelData(); //protected
-    public void ResetData() // delete
+    public void SaveLevelPassed(int levelNumber)
     {
-        SetLevelsData(null);
+        saveManager.SaveLevelPassed(levelNumber);
     }
 }

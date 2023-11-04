@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class JsonSaveManager : SaveManager
+public class JsonSaveLoader : SaveLoader
 {
     private const string DATA_KEY = "Data.json";
 
