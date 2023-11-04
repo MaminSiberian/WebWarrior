@@ -37,6 +37,8 @@ namespace UI
                 UnblockButton();
             else
                 BlockButton();
+
+            Debug.Log($"{levelNumber} {levels.Any(l => l == (levelNumber - 1))}");
         }
         private void BlockButton()
         {

@@ -63,6 +63,7 @@ public class SaveTester : MonoBehaviour
     private void ResetData()
     {
         SaveManager.saveLoader.ResetData();
+        SaveManager.LoadLevelsData();
     }
     [Button]
     private bool LevelIsPassed()

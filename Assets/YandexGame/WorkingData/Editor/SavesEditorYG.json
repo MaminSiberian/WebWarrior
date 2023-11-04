@@ -1,5 +1,5 @@
 {
-    "idSave": 32,
+    "idSave": 58,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -10,19 +10,6 @@
         true,
         false
     ],
-    "levelData": [
-        {
-            "levelNumber": 1,
-            "isPassed": true
-        },
-        {
-            "levelNumber": 2,
-            "isPassed": true
-        },
-        {
-            "levelNumber": 3,
-            "isPassed": true
-        }
-    ],
+    "levelData": [],
     "testInt": 0
 }
