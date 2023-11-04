@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using YG;
 
-public class YGSaveManager : SaveManager
+public class YGSaveLoader : SaveLoader
 {
     public override void SetLevelsData(List<LevelData> levels)
     {

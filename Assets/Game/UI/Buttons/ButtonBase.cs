@@ -5,18 +5,18 @@ namespace UI
 {
     public abstract class ButtonBase : MonoBehaviour
     {
-        private Button button;
+        protected Button button;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             button = GetComponent<Button>();
         }
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             //button.onClick.AddListener(PlayClickSound);
             button.onClick.AddListener(OnButtonClick);
         }
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             //button?.onClick.RemoveListener(PlayClickSound);
             button?.onClick.RemoveListener(OnButtonClick);

@@ -7,17 +7,17 @@ public class SaveTester : MonoBehaviour
 {
     [SerializeField] private SaveSystem saveSystem;
     [SerializeField] private int levelNumber;
-    private SaveManager saveManager;
+    private SaveLoader saveManager;
 
     private void Awake()
     {
         switch (saveSystem)
         {
             case SaveSystem.Json:
-                saveManager = new JsonSaveManager();
+                saveManager = new JsonSaveLoader();
                 break;
             case SaveSystem.YG:
-                saveManager = new YGSaveManager();
+                saveManager = new YGSaveLoader();
                 break;
             default:
                 break;
