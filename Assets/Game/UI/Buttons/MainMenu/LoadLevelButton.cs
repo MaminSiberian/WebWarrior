@@ -13,13 +13,14 @@ namespace UI
 
         protected override void Awake()
         {
-            base.Awake();
+            button = GetComponentInChildren<Button>();
             manager = FindAnyObjectByType<MainMenuManager>();
         }
         protected override void OnEnable()
         {
             base.OnEnable();
             SaveManager.OnLevelsDataChangedEvent += CheckLevel;
+            CheckLevel(SaveManager.passelLevels);
         }
         protected override void OnDisable()
         {
@@ -32,7 +33,7 @@ namespace UI
         }
         private void CheckLevel(List<int> levels)
         {
-            if (levels.Any(l => l == levelNumber))
+            if (levels.Any(l => l == (levelNumber - 1)))
                 UnblockButton();
             else
                 BlockButton();

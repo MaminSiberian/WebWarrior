@@ -2,14 +2,16 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using YG;
+using NaughtyAttributes;
+using System.Linq;
 
 public class SaveManager : MonoBehaviour
 {
     [SerializeField] private SaveSystem saveSystem;
 
-    public List<int> passelLevels { get; private set; }
+    public static List<int> passelLevels { get; private set; }
+    public static SaveLoader saveLoader { get; private set; }
     public static event Action<List<int>> OnLevelsDataChangedEvent;
-    private SaveLoader saveManager;
 
     private void Awake()
     {
@@ -18,10 +20,10 @@ public class SaveManager : MonoBehaviour
         switch (saveSystem)
         {
             case SaveSystem.Json:
-                saveManager = new JsonSaveLoader();
+                saveLoader = new JsonSaveLoader();
                 break;
             case SaveSystem.YG:
-                saveManager = new YGSaveLoader();
+                saveLoader = new YGSaveLoader();
                 break;
             default:
                 break;
@@ -42,21 +44,27 @@ public class SaveManager : MonoBehaviour
             LoadLevelsData();
         }
     }
-    public void LoadLevelsData()
+    [Button]
+    public static void LoadLevelsData()
     {
-        List<LevelData> levels = saveManager.LoadAllLevelData();
-        foreach (var level in levels)
+        passelLevels.Clear();
+        List<LevelData> levels = saveLoader.LoadAllLevelData();
+        if (levels == null)
+            passelLevels.Add(0);
+        else
         {
-            if (level.isPassed)
+            foreach (var level in levels)
             {
-                passelLevels.Add(level.levelNumber);
+                if (level.isPassed)
+                    passelLevels.Add(level.levelNumber);
             }
         }
+        if (!passelLevels.Any(l => l == 0)) passelLevels.Add(0);
         passelLevels.ForEach(l => Debug.Log(l));
         OnLevelsDataChangedEvent?.Invoke(passelLevels);
     }
-    public void SaveLevelPassed(int levelNumber)
+    public static void SaveLevelPassed(int levelNumber, bool isPassed = true)
     {
-        saveManager.SaveLevelPassed(levelNumber);
+        saveLoader.SaveLevelPassed(levelNumber, isPassed);
     }
 }

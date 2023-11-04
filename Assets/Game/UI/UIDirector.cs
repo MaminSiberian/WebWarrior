@@ -13,7 +13,6 @@ namespace UI
         [SerializeField] private GameObject levelPassedScreen;
         [SerializeField] private GameObject watchAddToReviveButton;
         [SerializeField] private GameObject reviveButton;
-
         #endregion
 
         #region MONOBEHS

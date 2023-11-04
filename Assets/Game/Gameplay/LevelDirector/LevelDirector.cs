@@ -1,16 +1,22 @@
-using System;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelDirector : MonoBehaviour
 {
+    private const string mainMenuStr = "MainMenu";
+    private const string levelStr = "UILevel";
+
     private void Awake()
     {
         Time.timeScale = 1.0f;
+        Debug.Log(SceneManager.sceneCountInBuildSettings);
     }
+    [Button]
     public static void FinishLevel()
     {
-        Debug.Log("save game: no method");
+        int currentLevel = int.Parse(SceneManager.GetActiveScene().name.Substring(levelStr.Length));
+        SaveManager.SaveLevelPassed(currentLevel);
         EventSystem.OnLevelFinished?.Invoke();
     }
     public static void RestartLevel()
@@ -20,10 +26,10 @@ public class LevelDirector : MonoBehaviour
     }
     public static void PlayNextLevel()
     {
-        Debug.Log("next level: no method");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public static void ReturnToMainMenu()
     {
-        Debug.Log("quit game: no method");
+        SceneManager.LoadScene(mainMenuStr);
     }
 }

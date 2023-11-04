@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Game/TestScenes/YandexTestBuild/MainMenu.unity
+    guid: fe9bb8e3381fac842a825bc66ff0fea4
+  - enabled: 1
+    path: Assets/Game/TestScenes/YandexTestBuild/UILevel1.unity
+    guid: a7fb635ec0bd31c498f79f2c60822f28
+  - enabled: 1
+    path: Assets/Game/TestScenes/YandexTestBuild/UILevel2.unity
+    guid: 281852f6962f15044a13a4e2706cbfe9
+  - enabled: 1
+    path: Assets/Game/TestScenes/YandexTestBuild/UILevel3.unity
+    guid: 1b917e7b8d5fb354393ca9f181ddab17
   m_configObjects: {}
