@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UI
 {
-    public class WatchAddToReviveButton : ButtonBase
+    public class WatchAdToReviveButton : ButtonBase
     {
         protected override void OnButtonClick()
         {
