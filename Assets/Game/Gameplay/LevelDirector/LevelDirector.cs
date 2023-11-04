@@ -4,19 +4,31 @@ using UnityEngine.SceneManagement;
 
 public class LevelDirector : MonoBehaviour
 {
+    public static int currentSceneNumber {  get; private set; }
+    public static int numberOfLevels => 3;
+
     private const string mainMenuStr = "MainMenu";
     private const string levelStr = "UILevel";
 
     private void Awake()
     {
         Time.timeScale = 1.0f;
-        Debug.Log(SceneManager.sceneCountInBuildSettings);
+    }
+    private void Start()
+    {
+        currentSceneNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(levelStr.Length));
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            FinishLevel();
+        }
     }
     [Button]
     public static void FinishLevel()
     {
-        int currentLevel = int.Parse(SceneManager.GetActiveScene().name.Substring(levelStr.Length));
-        SaveManager.SaveLevelPassed(currentLevel);
+        SaveManager.SaveLevelPassed(currentSceneNumber);
         EventSystem.OnLevelFinished?.Invoke();
     }
     public static void RestartLevel()

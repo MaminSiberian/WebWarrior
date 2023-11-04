@@ -60,7 +60,6 @@ public class SaveManager : MonoBehaviour
             }
         }
         if (!passelLevels.Any(l => l == 0)) passelLevels.Add(0);
-        passelLevels.ForEach(l => Debug.Log(l));
         OnLevelsDataChangedEvent?.Invoke(passelLevels);
     }
     public static void SaveLevelPassed(int levelNumber, bool isPassed = true)

@@ -33,6 +33,13 @@ namespace UI
             EventSystem.OnPauseDisable.RemoveListener(UnpauseGame);
             EventSystem.OnPlayerRevive.RemoveListener(OnPlayerRevive);
         }
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                OnPlayerDeath();
+            }
+        }
         #endregion
 
         #region PAUSE

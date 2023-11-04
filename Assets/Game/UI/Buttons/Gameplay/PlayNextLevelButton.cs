@@ -1,4 +1,3 @@
-using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -7,7 +6,7 @@ namespace UI
         protected override void OnEnable()
         {
             base.OnEnable();
-            if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+            if (LevelDirector.currentSceneNumber == LevelDirector.numberOfLevels)
             {
                 gameObject.SetActive(false);
             }
