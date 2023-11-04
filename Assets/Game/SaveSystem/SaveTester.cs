@@ -5,14 +5,7 @@ using NaughtyAttributes;
 public class SaveTester : MonoBehaviour
 {
     [SerializeField] private int levelNumber;
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ResetData();
-        }
-    }
+    
     [Button]
     private void ShowInfo()
     {

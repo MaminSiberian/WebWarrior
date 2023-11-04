@@ -18,13 +18,7 @@ public class LevelDirector : MonoBehaviour
     {
         currentSceneNumber = int.Parse(SceneManager.GetActiveScene().name.Substring(levelStr.Length));
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            FinishLevel();
-        }
-    }
+    
     [Button]
     public static void FinishLevel()
     {
