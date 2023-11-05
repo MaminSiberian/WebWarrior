@@ -8,6 +8,7 @@ namespace UI
         {
             AdvManager.WatchAddToRevive();
             gameObject.SetActive(false);
+            Time.timeScale = 0f;
         }
     }
 }

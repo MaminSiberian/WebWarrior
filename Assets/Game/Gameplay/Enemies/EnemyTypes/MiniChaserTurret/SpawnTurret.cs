@@ -9,7 +9,7 @@ namespace Enemies
             state = State.Attacking;
             var chaser = MiniChaserPool.GetMiniChaser();
             Physics.IgnoreCollision(coll, chaser.GetComponent<Collider>());
-            chaser.transform.position = transform.position + Vector3.forward * 0.5f;
+            chaser.transform.position = transform.position + Vector3.forward * 1f;
             OnAttackEnded();
         }
         protected override void SetData()

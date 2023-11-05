@@ -8,8 +8,8 @@ namespace Enemies
     public abstract class EnemyBase : PoolableObject
     {
         [SerializeField] protected List<Transform> patrolPoints;
-        [SerializeField] protected LayerMask layerForPlayerIsVisible;
 
+        protected LayerMask layerForPlayerIsVisible;
         protected float patrDelta = 0.1f;
         protected int currentPatrolPos = 0;
 

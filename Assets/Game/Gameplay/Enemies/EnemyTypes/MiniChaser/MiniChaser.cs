@@ -1,6 +1,5 @@
 using DG.Tweening;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Enemies
@@ -18,6 +17,17 @@ namespace Enemies
         private int enemyLayer = Layers.enemy;
 
         #region MONOBEHS
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            StartIdle();
+        }
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            layersToDamage = new List<int>() { playerLayer };
+            rb.velocity = Vector3.zero;
+        }
         private void Start()
         {
             StartIdle();

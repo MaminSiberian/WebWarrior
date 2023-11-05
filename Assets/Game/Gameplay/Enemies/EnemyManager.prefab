@@ -47,7 +47,7 @@ MonoBehaviour:
   layerForPlayerIsVisible:
     serializedVersion: 2
     m_Bits: 576
-  showChaserParams: 1
+  showChaserParams: 0
   _chaserPatrollingSpeed: 1
   _chaserMinChasingSpeed: 2
   _chaserMaxChasingSpeed: 4
@@ -79,5 +79,5 @@ MonoBehaviour:
   _turretReloadingTime: 1
   showSpawnTurretParams: 0
   _spawnTurretPatrollingSpeed: 2
-  _spawnTurretAttackingDistance: 25
+  _spawnTurretAttackingDistance: 18
   _spawnTurretReloadingTime: 4
