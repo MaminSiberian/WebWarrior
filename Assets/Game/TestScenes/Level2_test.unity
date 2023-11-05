@@ -30632,7 +30632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8425127977064997537, guid: 98e6e17c98104074682150f7d1d50ab1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.5509
+      value: 19.46
       objectReference: {fileID: 0}
     - target: {fileID: 8425127977064997537, guid: 98e6e17c98104074682150f7d1d50ab1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30640,7 +30640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8425127977064997537, guid: 98e6e17c98104074682150f7d1d50ab1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.446488
+      value: 8.24
       objectReference: {fileID: 0}
     - target: {fileID: 8425127977064997537, guid: 98e6e17c98104074682150f7d1d50ab1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38271,7 +38271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8425127977064997537, guid: 98e6e17c98104074682150f7d1d50ab1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.93402
+      value: 18.26
       objectReference: {fileID: 0}
     - target: {fileID: 8425127977064997537, guid: 98e6e17c98104074682150f7d1d50ab1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -38279,7 +38279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8425127977064997537, guid: 98e6e17c98104074682150f7d1d50ab1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.813374
+      value: 21.56
       objectReference: {fileID: 0}
     - target: {fileID: 8425127977064997537, guid: 98e6e17c98104074682150f7d1d50ab1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -43186,7 +43186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850412837539785270, guid: ddf935ca417696f4c9028c08218208df, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5509014
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4850412837539785270, guid: ddf935ca417696f4c9028c08218208df, type: 3}
       propertyPath: m_LocalPosition.y
@@ -43194,7 +43194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4850412837539785270, guid: ddf935ca417696f4c9028c08218208df, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.3364887
+      value: -5.14
       objectReference: {fileID: 0}
     - target: {fileID: 4850412837539785270, guid: ddf935ca417696f4c9028c08218208df, type: 3}
       propertyPath: m_LocalRotation.w
@@ -58367,7 +58367,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573329758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.7409008, y: 0, z: 1.4135115}
+  m_LocalPosition: {x: 0, y: 0, z: 1.4135115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79587,6 +79587,14 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1366389431}
+    - target: {fileID: 3216352190305387946, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
+      propertyPath: layerForEnemyToTouchAIM.m_Bits
+      value: 1344
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216352190305387946, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
+      propertyPath: layerForPlatformToTouchAIM.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     - target: {fileID: 3221364525873255828, guid: 6da47555875af6948aa8dc1c0caa408c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -80131,6 +80139,14 @@ PrefabInstance:
     - target: {fileID: 6595549218332693291, guid: 311ab23bbeb43d8468921b5a5dd9e0dd, type: 3}
       propertyPath: layerEnemyAndProjectile.m_Bits
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595549218332693291, guid: 311ab23bbeb43d8468921b5a5dd9e0dd, type: 3}
+      propertyPath: layerForEnemyToTouchAIM.m_Bits
+      value: 1344
+      objectReference: {fileID: 0}
+    - target: {fileID: 6595549218332693291, guid: 311ab23bbeb43d8468921b5a5dd9e0dd, type: 3}
+      propertyPath: layerForPlatformToTouchAIM.m_Bits
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6933551849070133306, guid: 311ab23bbeb43d8468921b5a5dd9e0dd, type: 3}
       propertyPath: m_RootOrder

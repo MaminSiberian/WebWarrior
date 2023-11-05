@@ -23,7 +23,8 @@ public class PlayerData : MonoBehaviour
     [Space]
     [Range(0, 30)] [SerializeField] public float triggerAngleAIM;
     [Range(0, 10)] [SerializeField] public int countRaiAIM;
-    [SerializeField] public LayerMask layerToTouchAIM;
+    [SerializeField] internal LayerMask layerForEnemyToTouchAIM;
+    [SerializeField] internal LayerMask layerForPlatformToTouchAIM;
     [SerializeField] public LayerMask layerWall;
     [SerializeField] public LayerMask layerEnemyAndProjectile;
 

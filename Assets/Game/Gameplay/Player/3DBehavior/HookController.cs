@@ -34,7 +34,9 @@ namespace HookControl
         [Space]
         [Range(0, 30)] [SerializeField] internal float triggerAngleAIM;
         [Range(0, 10)] [SerializeField] internal int countRaiAIM;
-        [SerializeField] internal LayerMask layerToTouchAIM;
+        //[SerializeField] internal LayerMask layerToTouchAIM;
+        [SerializeField] internal LayerMask layerForEnemyToTouchAIM;
+        [SerializeField] internal LayerMask layerForPlatformToTouchAIM;
         [SerializeField] internal LayerMask layerWall;
         [SerializeField] internal LayerMask layerEnemyAndProjectile;
         [SerializeField] internal LayerMask layerGround;
@@ -226,7 +228,8 @@ namespace HookControl
             this.timeStun = data.timeStun;
             this.triggerAngleAIM = data.triggerAngleAIM;
             this.countRaiAIM = data.countRaiAIM;
-            this.layerToTouchAIM = data.layerToTouchAIM;
+            this.layerForEnemyToTouchAIM = data.layerForEnemyToTouchAIM;
+            this.layerForPlatformToTouchAIM = data.layerForPlatformToTouchAIM;
             this.layerWall = data.layerWall;
             this.layerEnemyAndProjectile = data.layerEnemyAndProjectile;
         }

@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6595549218332693291
 MonoBehaviour:
@@ -44,27 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9d29b1878462f4187b6486e51dedcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hook: {fileID: 0}
-  rb: {fileID: 0}
-  defaultPointHook: {fileID: 0}
-  pointToRaiCast: {fileID: 0}
-  forceToThrowObject: 0
-  maxDistanseHook: 0
-  timeThrowHook: 0
-  timePullUpHook: 0
-  timeCaiot: 0
-  timeStun: 0
-  triggerAngleAIM: 0
-  countRaiAIM: 0
-  layerToTouchAIM:
+  forceToThrowObject: 3
+  maxDistanseHook: 10
+  timeThrowHook: 0.4
+  timePullUpHook: 0.5
+  timeCaiot: 0.1
+  timeStun: 1
+  triggerAngleAIM: 10
+  countRaiAIM: 10
+  layerForEnemyToTouchAIM:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1344
+  layerForPlatformToTouchAIM:
+    serializedVersion: 2
+    m_Bits: 192
   layerWall:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   layerEnemyAndProjectile:
     serializedVersion: 2
-    m_Bits: 0
-  layerGround:
-    serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256

@@ -4294,9 +4294,12 @@ MonoBehaviour:
   timeStun: 2
   triggerAngleAIM: 5
   countRaiAIM: 5
-  layerToTouchAIM:
+  layerForEnemyToTouchAIM:
     serializedVersion: 2
-    m_Bits: 1472
+    m_Bits: 1344
+  layerForPlatformToTouchAIM:
+    serializedVersion: 2
+    m_Bits: 192
   layerWall:
     serializedVersion: 2
     m_Bits: 64
@@ -4306,6 +4309,7 @@ MonoBehaviour:
   layerGround:
     serializedVersion: 2
     m_Bits: 8
+  mainCamera: {fileID: 0}
   direction: {x: 0, y: 0, z: 0}
   isActiveHook: 0
   isEndHook: 1

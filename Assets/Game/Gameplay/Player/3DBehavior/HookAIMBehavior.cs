@@ -29,25 +29,29 @@ namespace HookControl
 
             //var dir = hc.direction;
             //  
-            hit = RaiCast(hit, angleDir, step);
-
+            hit = RaiCast(hit, angleDir, step, hc.layerForEnemyToTouchAIM);
 
             if (CheckingForEnemyOrProjectile(hit))
             {
                 //Debug.Log("Переход в захват врага или пули");
                 hc.SetBehaviorCatchEnemyAndProjectile();
+                return;
             }
-            else if (CheckingforPoint(hit))
+
+            hit = RaiCast(hit, angleDir, step, hc.layerForPlatformToTouchAIM);
+
+            if (CheckingforPoint(hit))
             {
                 //Debug.Log("Переход в захват точки");
                 hc.SetBehaviorCarchPoint();
+                return;
             }
-            else
-            {
+            //else
+            //{
                 //если и точек нет то переходим в состояние пустого броска
                 //Debug.Log("Переход в пустой");
                 hc.SetBehaviorCatchEmpty();
-            }
+           // }
         }
 
         private bool CheckingforPoint(RaycastHit[] hit)
@@ -81,7 +85,7 @@ namespace HookControl
             return check;
         }
 
-        private RaycastHit[] RaiCast(RaycastHit[] hit, float angleDir, float step)
+        private RaycastHit[] RaiCast(RaycastHit[] hit, float angleDir, float step, LayerMask layer)
         {
 
             Vector3 dir = AccessoryMetods.GetVectorFromAngleXZ(angleDir);
@@ -95,7 +99,8 @@ namespace HookControl
                     dir,
                     out hit[i],
                     hc.maxDistanseHook,
-                    hc.layerToTouchAIM);
+                    layer);
+                    //hc.layerToTouchAIM);
                 i++;
                 if (i % 2 == 0)
                 {
