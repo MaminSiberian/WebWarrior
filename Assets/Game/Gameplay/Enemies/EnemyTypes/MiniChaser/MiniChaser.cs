@@ -20,7 +20,6 @@ namespace Enemies
         #region MONOBEHS
         private void Start()
         {
-            layersToDamage = new List<int>() { playerLayer };
             StartIdle();
         }
         private void FixedUpdate()
@@ -62,11 +61,19 @@ namespace Enemies
 
             StartIdle();
         }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.gameObject.layer == Layers.walls)
+            {
+                StartIdle();
+            }
+        }
         #endregion
 
         #region CHANGING_STATES
         private void StartIdle()
         {
+            layersToDamage = new List<int>() { playerLayer };
             state = State.Idle;
         }
         private void StartChasing()

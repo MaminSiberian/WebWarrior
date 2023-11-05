@@ -17,11 +17,16 @@ namespace Enemies
         private int defaultLayer = Layers.defaultLayer;
         private int playerLayer = Layers.player;
         private int enemyLayer = Layers.enemy;
+        private Tween tween;
 
         #region MONOBEHS
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            tween.Kill();
+        }
         private void Start()
         {
-            layersToDamage = new List<int>() { playerLayer };
             StartPatrolling();
         }
         private void FixedUpdate()
@@ -69,11 +74,19 @@ namespace Enemies
 
             StartPatrolling();
         }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.gameObject.layer == Layers.walls)
+            {
+                StartPatrolling();
+            }
+        }
         #endregion
 
         #region CHANGING_STATES
         private void StartIdle()
         {
+            layersToDamage = new List<int>() { playerLayer };
             rb.velocity = Vector3.zero;
             state = State.Idle;
         }
@@ -85,6 +98,7 @@ namespace Enemies
                 return;
             }
 
+            layersToDamage = new List<int>() { playerLayer };
             state = State.Patrolling;
             moveSpeed = patrollingSpeed;
             target = patrolPoints[currentPatrolPos];
@@ -101,7 +115,7 @@ namespace Enemies
         {
             state = State.Attacking;         
             target = player;
-            transform.DOMove(target.position, attackingSpeed)
+            tween = transform.DOMove(target.position, attackingSpeed)
                 .SetEase(Ease.InBack)
                 .SetSpeedBased()
                 .OnKill(() => OnAttackEnded());
@@ -138,6 +152,7 @@ namespace Enemies
         {
             layersToDamage = new List<int>() { defaultLayer };
             state = State.Grabbed;
+            tween.Kill();
         }
 
         public void OnRelease()

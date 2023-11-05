@@ -13,8 +13,12 @@ public class DamagingTrigger : MonoBehaviour
     {
         if (damager.layersToDamage.Any(l => l == coll.gameObject.layer))
         {
-            coll.GetComponent<IDamagable>().GetDamage();
-            damager.OnDamage();
+            IDamagable obj = coll.GetComponent<IDamagable>();
+            if (obj != null)
+            {
+                obj.GetDamage();
+                damager.OnDamage();
+            }
         }
     }
 }

@@ -60,7 +60,7 @@ namespace Enemies
                 StartReloading();
                 return;
             }
-
+            Debug.Log(PlayerIsVisible());
             if (DistanceToPlayer() <= attackingDistance
                 && PlayerIsVisible()
                 && state != State.Attacking)
@@ -77,11 +77,19 @@ namespace Enemies
             }
             StartPatrolling();
         }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.collider.gameObject.layer == Layers.walls)
+            {
+                StartPatrolling();
+            }
+        }
         #endregion
 
         #region CHANGING_STATES
         private void StartIdle()
         {
+            layersToDamage = new List<int>() { playerLayer };
             state = State.Idle;
         }
         private void StartPatrolling()
@@ -92,6 +100,7 @@ namespace Enemies
                 return;
             }
 
+            layersToDamage = new List<int>() { playerLayer };
             state = State.Patrolling;
             moveSpeed = patrollingSpeed;
             target = patrolPoints[currentPatrolPos];

@@ -11,7 +11,6 @@ namespace Enemies
 
         protected float patrDelta = 0.1f;
         protected int currentPatrolPos = 0;
-        private int wallsLayer = Layers.walls;
 
         public State state {  get; protected set; }
 
@@ -54,7 +53,8 @@ namespace Enemies
             RaycastHit hit;
             if (Physics.Linecast(transform.position, player.position, out hit))
             {
-                if (hit.collider.gameObject.layer == wallsLayer)
+                Debug.Log(hit.collider.gameObject.layer);
+                if (hit.collider.gameObject.layer == Layers.walls || hit.collider.gameObject.layer == Layers.magnit)
                     return false;
             }
             return true;
