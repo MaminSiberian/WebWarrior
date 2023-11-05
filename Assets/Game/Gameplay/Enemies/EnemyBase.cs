@@ -53,7 +53,9 @@ namespace Enemies
             RaycastHit hit;
             if (Physics.Linecast(transform.position, player.position, out hit))
             {
-                if (hit.collider.gameObject.layer == Layers.walls || hit.collider.gameObject.layer == Layers.magnit)
+                if (hit.collider.gameObject.layer == Layers.walls 
+                    || hit.collider.gameObject.layer == Layers.magnit 
+                    || hit.collider.gameObject.layer == Layers.thorns)
                     return false;
             }
             return true;
