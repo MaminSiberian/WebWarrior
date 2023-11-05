@@ -137,6 +137,7 @@ namespace Enemies
 
         protected override void SetData()
         {
+            base.SetData();
             patrollingSpeed = data.turretPatrollingSpeed;
             attackingForce = data.turretAttackingForce;
             attackingDistance = data.turretAttackingDistance;

@@ -446,14 +446,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 679375505}
     m_Modifications:
-    - target: {fileID: 1518594218625777795, guid: 7971666b9fe9c4f4c92846c68750f938, type: 3}
-      propertyPath: showChaserParams
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1518594218625777795, guid: 7971666b9fe9c4f4c92846c68750f938, type: 3}
-      propertyPath: _chaserChasingDistance
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2611393458998897832, guid: 7971666b9fe9c4f4c92846c68750f938, type: 3}
       propertyPath: m_Name
       value: EnemyManager

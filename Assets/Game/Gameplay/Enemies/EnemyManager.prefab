@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1518594218625777795
 MonoBehaviour:
@@ -44,12 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c96b7ead0bb0448bc3fb8a979392b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showChaserParams: 0
+  layerForPlayerIsVisible:
+    serializedVersion: 2
+    m_Bits: 576
+  showChaserParams: 1
   _chaserPatrollingSpeed: 1
   _chaserMinChasingSpeed: 2
   _chaserMaxChasingSpeed: 4
   _chaserAttackingSpeed: 4
-  _chaserChasingDistance: 6
+  _chaserChasingDistance: 10
   _chaserAttackingDistance: 2
   showShooterParams: 0
   _shooterPatrollingSpeed: 2

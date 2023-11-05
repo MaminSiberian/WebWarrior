@@ -19,6 +19,7 @@ namespace Enemies
         }
         protected override void SetData()
         {
+            base.SetData();
             patrollingSpeed = data.carrierPatrollingSpeed;
             chasingSpeed = Random.Range(data.carrierMinChasingSpeed, data.carrierMaxChasingSpeed);
             attackingSpeed = data.carrierAttackingSpeed;

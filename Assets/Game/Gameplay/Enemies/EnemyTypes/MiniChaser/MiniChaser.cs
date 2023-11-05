@@ -112,6 +112,7 @@ namespace Enemies
         }
         protected override void SetData()
         {
+            base.SetData();
             chasingSpeed = Random.Range(data.miniChaserMinChasingSpeed, data.miniChaserMaxChasingSpeed);
             attackingSpeed = data.miniChaserAttackingSpeed;
             chasingDistance = data.miniChaserChasingDistance;

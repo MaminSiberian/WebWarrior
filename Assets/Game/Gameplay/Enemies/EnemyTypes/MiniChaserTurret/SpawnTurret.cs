@@ -14,6 +14,7 @@ namespace Enemies
         }
         protected override void SetData()
         {
+            base.SetData();
             patrollingSpeed = data.spawnTurretPatrollingSpeed;
             attackingDistance = data.spawnTurretAttackingDistance;
             reloadingTime = data.spawnTurretReloadingTime;
