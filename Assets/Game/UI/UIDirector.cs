@@ -33,6 +33,10 @@ namespace UI
             EventSystem.OnPauseDisable.RemoveListener(UnpauseGame);
             EventSystem.OnPlayerRevive.RemoveListener(OnPlayerRevive);
         }
+        private void Start()
+        {
+            Time.timeScale = 1f;
+        }
         #endregion
 
         #region PAUSE
@@ -62,6 +66,7 @@ namespace UI
         [Button]
         private void OnPlayerDeath()
         {
+            Time.timeScale = 0f;
             TurnOffAll();
             gameOverScreen.SetActive(true);
             reviveButton.SetActive(false);
@@ -69,6 +74,7 @@ namespace UI
         [Button]
         private void OnLevelFinished()
         {
+            Time.timeScale = 0f;
             TurnOffAll();
             levelPassedScreen.SetActive(true);
         }
@@ -81,6 +87,7 @@ namespace UI
         }
         private void OnPlayerRevive()
         {
+            Time.timeScale = 1f;
             TurnOffAll();
             pauseButton.SetActive(true);
         }
