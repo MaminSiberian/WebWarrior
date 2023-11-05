@@ -60,7 +60,6 @@ namespace Enemies
                 StartReloading();
                 return;
             }
-            Debug.Log(PlayerIsVisible());
             if (DistanceToPlayer() <= attackingDistance
                 && PlayerIsVisible()
                 && state != State.Attacking)
