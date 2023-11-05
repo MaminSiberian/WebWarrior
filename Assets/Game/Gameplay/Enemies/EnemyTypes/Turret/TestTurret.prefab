@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6035017635119614664}
   - component: {fileID: 4599100766874921391}
   - component: {fileID: 5959423359477043509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3924673625716521550
 MeshFilter:
@@ -149,3 +149,8 @@ MonoBehaviour:
   isSelfDestructable: 0
   lifetime: 0
   patrolPoints: []
+  layerForPlayerIsVisible:
+    serializedVersion: 2
+    m_Bits: 0
+  shootPlayer: 1
+  _aimTarget: {fileID: 0}

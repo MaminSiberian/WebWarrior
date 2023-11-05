@@ -158,7 +158,6 @@ namespace Enemies
 
         public void OnRelease()
         {
-            Debug.Log("release");
             layersToDamage = new List<int>() { enemyLayer };
             state = State.Released;
         }

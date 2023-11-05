@@ -11,7 +11,7 @@ public class DamagingTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider coll)
     {
-        if (damager == null) return;
+        if (damager == null || coll.gameObject == null) return;
         if (damager.layersToDamage.Any(l => l == coll.gameObject.layer))
         {
             IDamagable obj = coll.GetComponent<IDamagable>();
