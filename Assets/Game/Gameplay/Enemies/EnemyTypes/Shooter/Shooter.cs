@@ -175,10 +175,12 @@ namespace Enemies
 
         protected override void SetData()
         {
+            base.SetData();
             patrollingSpeed = data.shooterPatrollingSpeed;
             attackingForce = data.shooterAttackingForce;
             attackingDistance = data.shooterAttackingDistance;
             reloadingTime = data.shooterReloadingTime;
+
         }
 
         public void OnDamage()

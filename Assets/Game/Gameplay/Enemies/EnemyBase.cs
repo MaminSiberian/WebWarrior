@@ -8,6 +8,7 @@ namespace Enemies
     public abstract class EnemyBase : PoolableObject
     {
         [SerializeField] protected List<Transform> patrolPoints;
+        [SerializeField] protected LayerMask layerForPlayerIsVisible;
 
         protected float patrDelta = 0.1f;
         protected int currentPatrolPos = 0;
@@ -51,11 +52,11 @@ namespace Enemies
         protected bool PlayerIsVisible()
         {
             RaycastHit hit;
-            if (Physics.Linecast(transform.position, player.position, out hit))
+            if (Physics.Linecast(transform.position, player.position, out hit, layerForPlayerIsVisible))
             {
-                if (hit.collider.gameObject.layer == Layers.walls 
-                    || hit.collider.gameObject.layer == Layers.magnit 
-                    || hit.collider.gameObject.layer == Layers.thorns)
+                if (hit.collider.gameObject.layer == Layers.walls )
+                    //|| hit.collider.gameObject.layer == Layers.magnit 
+                    //|| hit.collider.gameObject.layer == Layers.thorns)
                     return false;
             }
             return true;
@@ -80,7 +81,10 @@ namespace Enemies
 
         #region ABSTRACTS
         protected abstract void OnEnemyDeath();
-        protected abstract void SetData();
+        protected virtual void SetData()
+        {
+            layerForPlayerIsVisible = data.LayerForPlayerIsVisible;
+        }
         #endregion
     }
 }

@@ -6,6 +6,10 @@ namespace Enemies
 {
     public class EnemyData : MonoBehaviour
     {
+        // add by co6op13
+        [SerializeField] private LayerMask layerForPlayerIsVisible;
+        public LayerMask LayerForPlayerIsVisible { get { return layerForPlayerIsVisible; } }
+        //
         #region CHASER_PARAMS
         [Header("Chaser")]
         [SerializeField] private bool showChaserParams;
