@@ -1,0 +1,1037 @@
+fileFormatVersion: 2
+guid: 11b7ec2ad3b2b2349abffc96fa7de2ea
+importerOverride:
+  nativeImporterType: 2089858483
+  scriptedImporterType:
+    serializedVersion: 2
+    Hash: b10b55a1aa6a1aa32521bc0cab59632e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: WhiskersRUp
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 379
+      y: 436
+      width: 254
+      height: 194
+    spriteID: f18523088d710384a987411ed94387d6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 379, y: 436}
+    spritePosition: {x: 815, y: 177}
+  - name: WhiskersRMidle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 379
+      y: 1260
+      width: 258
+      height: 132
+    spriteID: 3594050fafcef87458962db592f90dc1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 379, y: 1260}
+    spritePosition: {x: 610, y: 174}
+  - name: WhiskersRDawn
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 925
+      y: 4
+      width: 87
+      height: 183
+    spriteID: c33fae81acf7ab644ac0db2eb6196ed0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 925, y: 4}
+    spritePosition: {x: 563, y: 272}
+  - name: WhiskersLUp
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 379
+      y: 638
+      width: 188
+      height: 260
+    spriteID: efaaa6b2cb65f1742b17a9d631ba1463
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 379, y: 638}
+    spritePosition: {x: 0, y: 256}
+  - name: WhiskersLMidle
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 646
+      y: 793
+      width: 275
+      height: 76
+    spriteID: cccf1893b3b1c6647944cd2298e401c5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 646, y: 793}
+    spritePosition: {x: 133, y: 241}
+  - name: WhiskersLDawn
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 379
+      y: 1400
+      width: 117
+      height: 170
+    spriteID: 03b995c6841068340ab5173f5e12097c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 379, y: 1400}
+    spritePosition: {x: 370, y: 282}
+  - name: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 945
+      y: 521
+      width: 26
+      height: 29
+    spriteID: fa06b5fcf407aa54089c5b79c9de95f0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 945, y: 521}
+    spritePosition: {x: 546, y: 320}
+  - name: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 945
+      y: 657
+      width: 26
+      height: 29
+    spriteID: bfbc1588973aabb4cbdabd0145b9ac33
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 945, y: 657}
+    spritePosition: {x: 438, y: 323}
+  - name: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 367
+      height: 570
+    spriteID: 0659395b81c7a4a458ba47e8b85484a4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+    spritePosition: {x: 343, y: 279}
+  - name: DawnBody
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 646
+      y: 4
+      width: 271
+      height: 195
+    spriteID: 240ad704fa73cd24ab83f551786c0964
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 646, y: 4}
+    spritePosition: {x: 391, y: 288}
+  - name: Lag2RDawn
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 646
+      y: 521
+      width: 291
+      height: 128
+    spriteID: 30f9e704dfd23134b8930577ca513173
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 646, y: 521}
+    spritePosition: {x: 599, y: 411}
+  - name: Lag2RUp
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 646
+      y: 364
+      width: 261
+      height: 149
+    spriteID: cafc17c2b49a11247b85886cd1aa39d9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 646, y: 364}
+    spritePosition: {x: 783, y: 393}
+  - name: Lag2LDawn
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 646
+      y: 657
+      width: 291
+      height: 128
+    spriteID: 1a103efeda430124ba3b0f911e29ce0c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 646, y: 657}
+    spritePosition: {x: 162, y: 411}
+  - name: Lag2LUp
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 646
+      y: 207
+      width: 262
+      height: 149
+    spriteID: 0d229a5e228b5e84dba4dbebd642babd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 646, y: 207}
+    spritePosition: {x: 7, y: 393}
+  - name: Lag1RDawn
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 379
+      y: 4
+      width: 259
+      height: 208
+    spriteID: ada17fca36317aa4aa4b4a77bbf6a32f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 379, y: 4}
+    spritePosition: {x: 582, y: 244}
+  - name: Lag1RUp
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 900
+      width: 282
+      height: 309
+    spriteID: 1f16b40bf27a4e948a516c7f4207ee9d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 900}
+    spritePosition: {x: 518, y: 0}
+  - name: Lag1LDawn
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 379
+      y: 220
+      width: 259
+      height: 208
+    spriteID: 308f013a0f69e004c986593e8b452787
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 379, y: 220}
+    spritePosition: {x: 193, y: 245}
+  - name: Lag1LDawn
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 582
+      width: 282
+      height: 310
+    spriteID: 3c051e4386e99764f8d0237d587db9c5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 582}
+    spritePosition: {x: 234, y: 0}
+  - name: Lag3RDawn
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 379
+      y: 906
+      width: 209
+      height: 169
+    spriteID: b97defd46bb6fb94ba56b868f04dc518
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 379, y: 906}
+    spritePosition: {x: 598, y: 565}
+  - name: Lag3RUp
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1217
+      width: 177
+      height: 323
+    spriteID: 82d88e253d0c84f4eb60a967efa84a93
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1217}
+    spritePosition: {x: 668, y: 676}
+  - name: Lag3LDawn
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 379
+      y: 1083
+      width: 209
+      height: 169
+    spriteID: eedcd7d17155d8e43a972cfa214f7f29
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 379, y: 1083}
+    spritePosition: {x: 246, y: 565}
+  - name: Lag3RUp
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1548
+      width: 177
+      height: 323
+    spriteID: a4c4e8a6c03c1aa4a991efb6f94ed226
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1548}
+    spritePosition: {x: 208, y: 676}
+  - name: Root
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 916
+      y: 207
+      width: 103
+      height: 117
+    spriteID: 5a526487eeb9dad42bcc40f8580d9d50
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 916, y: 207}
+    spritePosition: {x: 481, y: 487}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    ignorePlatformSupport: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  padding: 4
+  spriteSizeExpand: 0
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: whiskers
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: dbbe12d9b9952534fb80a5861924c1f6
+    layerID: 100
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: WhiskersR
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: 4bc29a4b8b567904ea23c2e9a58d99b4
+    layerID: 98
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: WhiskersRUp
+    spriteName: WhiskersRUp
+    isGroup: 0
+    parentIndex: 1
+    spriteID: f18523088d710384a987411ed94387d6
+    layerID: 97
+    mosaicPosition: {x: 379, y: 436}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: WhiskersRMidle
+    spriteName: WhiskersRMidle
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 3594050fafcef87458962db592f90dc1
+    layerID: 96
+    mosaicPosition: {x: 379, y: 1260}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: WhiskersRDawn
+    spriteName: WhiskersRDawn
+    isGroup: 0
+    parentIndex: 1
+    spriteID: c33fae81acf7ab644ac0db2eb6196ed0
+    layerID: 95
+    mosaicPosition: {x: 925, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: WhiskersL
+    spriteName: 
+    isGroup: 1
+    parentIndex: 0
+    spriteID: d1c62f473d2922a48b2f8f607404dca7
+    layerID: 93
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: WhiskersLUp
+    spriteName: WhiskersLUp
+    isGroup: 0
+    parentIndex: 5
+    spriteID: efaaa6b2cb65f1742b17a9d631ba1463
+    layerID: 92
+    mosaicPosition: {x: 379, y: 638}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: WhiskersLMidle
+    spriteName: WhiskersLMidle
+    isGroup: 0
+    parentIndex: 5
+    spriteID: cccf1893b3b1c6647944cd2298e401c5
+    layerID: 91
+    mosaicPosition: {x: 646, y: 793}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: WhiskersLDawn
+    spriteName: WhiskersLDawn
+    isGroup: 0
+    parentIndex: 5
+    spriteID: 03b995c6841068340ab5173f5e12097c
+    layerID: 90
+    mosaicPosition: {x: 379, y: 1400}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Yais
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: b8a9fca27a30cef4f98532e3c5747a39
+    layerID: 88
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: YaisR
+    spriteName: 
+    isGroup: 1
+    parentIndex: 9
+    spriteID: ed048fe3392217e44bd5dc5a959c75e0
+    layerID: 86
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    spriteName: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    isGroup: 0
+    parentIndex: 10
+    spriteID: fa06b5fcf407aa54089c5b79c9de95f0
+    layerID: 85
+    mosaicPosition: {x: 945, y: 521}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: YaisL
+    spriteName: 
+    isGroup: 1
+    parentIndex: 9
+    spriteID: 37a0c56916abb414aa01a2aa7611f1b9
+    layerID: 82
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    spriteName: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    isGroup: 0
+    parentIndex: 12
+    spriteID: bfbc1588973aabb4cbdabd0145b9ac33
+    layerID: 81
+    mosaicPosition: {x: 945, y: 657}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Body
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 636ca749cd1225d479db615375965c60
+    layerID: 78
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    spriteName: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 0659395b81c7a4a458ba47e8b85484a4
+    layerID: 76
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: DawnBody
+    spriteName: DawnBody
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 240ad704fa73cd24ab83f551786c0964
+    layerID: 40
+    mosaicPosition: {x: 646, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag2R
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: f2055fccce982a247ba87b0438caecd9
+    layerID: 38
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Lag2RDawn
+    spriteName: Lag2RDawn
+    isGroup: 0
+    parentIndex: 17
+    spriteID: 30f9e704dfd23134b8930577ca513173
+    layerID: 37
+    mosaicPosition: {x: 646, y: 521}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag2RUp
+    spriteName: Lag2RUp
+    isGroup: 0
+    parentIndex: 17
+    spriteID: cafc17c2b49a11247b85886cd1aa39d9
+    layerID: 36
+    mosaicPosition: {x: 646, y: 364}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag2L
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: a78fcc2e8326fdb45b9e163f6e4df06a
+    layerID: 34
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Lag2LDawn
+    spriteName: Lag2LDawn
+    isGroup: 0
+    parentIndex: 20
+    spriteID: 1a103efeda430124ba3b0f911e29ce0c
+    layerID: 33
+    mosaicPosition: {x: 646, y: 657}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag2LUp
+    spriteName: Lag2LUp
+    isGroup: 0
+    parentIndex: 20
+    spriteID: 0d229a5e228b5e84dba4dbebd642babd
+    layerID: 32
+    mosaicPosition: {x: 646, y: 207}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag1R
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: bee9316805f6d954fb1974bfef2c5b13
+    layerID: 30
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Lag1RDawn
+    spriteName: Lag1RDawn
+    isGroup: 0
+    parentIndex: 23
+    spriteID: ada17fca36317aa4aa4b4a77bbf6a32f
+    layerID: 29
+    mosaicPosition: {x: 379, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag1RUp
+    spriteName: Lag1RUp
+    isGroup: 0
+    parentIndex: 23
+    spriteID: 1f16b40bf27a4e948a516c7f4207ee9d
+    layerID: 26
+    mosaicPosition: {x: 4, y: 900}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag1L
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: c7d58c95cd6ff9343b8d27f71a0ed142
+    layerID: 19
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Lag1LDawn
+    spriteName: Lag1LDawn
+    isGroup: 0
+    parentIndex: 26
+    spriteID: 308f013a0f69e004c986593e8b452787
+    layerID: 18
+    mosaicPosition: {x: 379, y: 220}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag1LDawn
+    spriteName: Lag1LDawn
+    isGroup: 0
+    parentIndex: 26
+    spriteID: 3c051e4386e99764f8d0237d587db9c5
+    layerID: 15
+    mosaicPosition: {x: 4, y: 582}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag3R
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: c817a23d6065b274094245924a1e1930
+    layerID: 8
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Lag3RDawn
+    spriteName: Lag3RDawn
+    isGroup: 0
+    parentIndex: 29
+    spriteID: b97defd46bb6fb94ba56b868f04dc518
+    layerID: 7
+    mosaicPosition: {x: 379, y: 906}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag3RUp
+    spriteName: Lag3RUp
+    isGroup: 0
+    parentIndex: 29
+    spriteID: 82d88e253d0c84f4eb60a967efa84a93
+    layerID: 6
+    mosaicPosition: {x: 4, y: 1217}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag3L
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 9d8a0a756416dbd419c39b5f271a3f7f
+    layerID: 4
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Lag3LDawn
+    spriteName: Lag3LDawn
+    isGroup: 0
+    parentIndex: 32
+    spriteID: eedcd7d17155d8e43a972cfa214f7f29
+    layerID: 3
+    mosaicPosition: {x: 379, y: 1083}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Lag3RUp
+    spriteName: Lag3RUp
+    isGroup: 0
+    parentIndex: 32
+    spriteID: a4c4e8a6c03c1aa4a991efb6f94ed226
+    layerID: 2
+    mosaicPosition: {x: 4, y: 1548}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Root
+    spriteName: Root
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 5a526487eeb9dad42bcc40f8580d9d50
+    layerID: 102
+    mosaicPosition: {x: 916, y: 207}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting:
+  - spriteId: 636ca749cd1225d479db615375965c60
+    name: Body
+    layerId: 78
+    flatten: 0
+    isGroup: 1
+    importLayer: 1
+  - spriteId: 0659395b81c7a4a458ba47e8b85484a4
+    name: "<\u0413\u0440\u0443\u043F\u043F\u0430>"
+    layerId: 76
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
